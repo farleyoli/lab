@@ -1,12 +1,13 @@
-function [M, idx] = unnormalized_spectral_clustering (A, k, sigma)
-% Implementation of the Unnormalized Spectral Clustering algorithm as specified in
-% the paper "A Tutorial on Spectral Clustering" by Ulrike von Luxburg.
+function [M, idx] = normalized_spectral_clustering_SM (A, k, sigma)
+% Implementation of the Normalized Spectral Clustering according to Ng, Jordan and Weiss
+% algorithm as specified in the paper "A Tutorial on Spectral Clustering" by Ulrike 
+% von Luxburg.
 % 
 % Inputs: 
 %  A: Data matrix, where the data vectors A_i are represented as row vectors. 
 %     The size of A is m x n where m is the number of vectors and n their dimension.
 %  k: Number of clusters
-%  sigma: Parameter for constructing similarity graph
+%  sigma: Parameter for constructing similarity graph (Gaussian similarity function)
 %
 % Outputs:
 %  M: Matrix where the k-th row vector is the representive vector of the k-th cluster.
@@ -15,7 +16,7 @@ function [M, idx] = unnormalized_spectral_clustering (A, k, sigma)
 % Examples:
 %  [M, idx] = unnormalized_spectral_clustering(A,2,1); returns the matrix M where the row
 %  vectors represent each cluster and array idx where idx(i) indicates which cluster the
-%  i-th data vector is an element of.
+%  i-th data vector is an element of. (two clusters)
    
    [m,n] = size (A);
    M = zeros(k,n);
@@ -30,7 +31,7 @@ function [M, idx] = unnormalized_spectral_clustering (A, k, sigma)
    end
    W = S;
 
-   % compute the unnormalized laplacian L
+   % compute the unnormalized laplacian L and the normalized laplacian Lsym
    deg = zeros(1,m);
    for(i = 1:m)
       for(j = 1:m)
@@ -39,15 +40,21 @@ function [M, idx] = unnormalized_spectral_clustering (A, k, sigma)
    end
    D = diag(deg);
    L = D - W;
+   Dmhalf = diag(deg.^(-1/2));
+   Dhalf = diag(deg.^(1/2));
+   Lsym = Dmhalf * L * Dhalf;
 
 
-   % compute the first k eigenvectors V_1, ..., V_k of L
-   % corresponding to the k smallest eigenvalues (E_11 is the smalles eigenvalue)
+   % compute the first k eigenvectors V_1, ..., V_k of Lsym
+   % corresponding to the k smallest eigenvalues (E_11 is the smallest eigenvalue)
    V = zeros(n, k); % eigenvalues as columns
-   [V,E] = eigs(L, k, 'sm');
+   [V,E] = eigs(Lsym, k, 'sm');
    E = fliplr(E);
    E = flipud(E);
    V = fliplr(V);
+
+   % normalize V such that the row vectors have norm 1
+   V = normr(V);
 
    % for i = 1,...,n, let y_i in R^k be the vector corresponding to the i-th row of V
    for(i = 1:m)
@@ -69,8 +76,6 @@ function [M, idx] = unnormalized_spectral_clustering (A, k, sigma)
       end
       M(i,:) = sum / n_elem;
    end
-
-   idx
 
 end
 

@@ -1,12 +1,13 @@
-function [M, idx] = unnormalized_spectral_clustering (A, k, sigma)
-% Implementation of the Unnormalized Spectral Clustering algorithm as specified in
-% the paper "A Tutorial on Spectral Clustering" by Ulrike von Luxburg.
+function [M, idx] = normalized_spectral_clustering_SM (A, k, sigma)
+% Implementation of the Normalized Spectral Clustering according to Shi and Malik
+% algorithm as specified in the paper "A Tutorial on Spectral Clustering" by Ulrike 
+% von Luxburg.
 % 
 % Inputs: 
 %  A: Data matrix, where the data vectors A_i are represented as row vectors. 
 %     The size of A is m x n where m is the number of vectors and n their dimension.
 %  k: Number of clusters
-%  sigma: Parameter for constructing similarity graph
+%  sigma: Parameter for constructing similarity graph (Gaussian similarity function)
 %
 % Outputs:
 %  M: Matrix where the k-th row vector is the representive vector of the k-th cluster.
@@ -15,7 +16,7 @@ function [M, idx] = unnormalized_spectral_clustering (A, k, sigma)
 % Examples:
 %  [M, idx] = unnormalized_spectral_clustering(A,2,1); returns the matrix M where the row
 %  vectors represent each cluster and array idx where idx(i) indicates which cluster the
-%  i-th data vector is an element of.
+%  i-th data vector is an element of. (two clusters)
    
    [m,n] = size (A);
    M = zeros(k,n);
@@ -42,9 +43,10 @@ function [M, idx] = unnormalized_spectral_clustering (A, k, sigma)
 
 
    % compute the first k eigenvectors V_1, ..., V_k of L
-   % corresponding to the k smallest eigenvalues (E_11 is the smalles eigenvalue)
+   % corresponding to the k smallest eigenvalues (D_11 is the smallest eigenvalue)
+   % in here, we solve the general eigenvalue problem
    V = zeros(n, k); % eigenvalues as columns
-   [V,E] = eigs(L, k, 'sm');
+   [V,E] = eigs(L, D, k, 'sm');
    E = fliplr(E);
    E = flipud(E);
    V = fliplr(V);
@@ -57,7 +59,7 @@ function [M, idx] = unnormalized_spectral_clustering (A, k, sigma)
 
    [Mt, idx] = kmeans(Y, k);
 
-   % calculate the matrix M for the original data
+   % calculate the matrix M for the original data 
    for(i = 1:k)
       sum = zeros(1,n);
       n_elem = 0;
@@ -70,7 +72,6 @@ function [M, idx] = unnormalized_spectral_clustering (A, k, sigma)
       M(i,:) = sum / n_elem;
    end
 
-   idx
 
 end
 
