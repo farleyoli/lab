@@ -10,7 +10,7 @@ function [M, idx] = normalized_spectral_clustering_SM (A, k, sigma)
 %  sigma: Parameter for constructing similarity graph (Gaussian similarity function)
 %
 % Outputs:
-%  M: Matrix where the k-th row vector is the representive vector of the k-th cluster.
+%  M: Matrix whose k-th row vector is the representive vector of the k-th cluster.
 %  idx: idx(i) in {1, ..., m} indicates which cluster A_i is an element of.
 %
 % Examples:
@@ -18,18 +18,19 @@ function [M, idx] = normalized_spectral_clustering_SM (A, k, sigma)
 %  vectors represent each cluster and array idx where idx(i) indicates which cluster the
 %  i-th data vector is an element of. (two clusters)
    
+   %A = standardizeR(A);
+
    [m,n] = size (A);
    M = zeros(k,n);
-   S = zeros(m,m); % similarity graph
+   W = zeros(m,m); % similarity graph
 
    % construct similarity graph (fully connected graph constructed using the Gaussian
    % similarity function)
    for(i = 1:m)
       for(j = 1:m)
-         S(i,j) = exp(-(norm(A(i,:) - A(j,:))^2)/(2*sigma*sigma));
+         W(i,j) = exp(-(norm(A(i,:) - A(j,:))^2)/(2*sigma*sigma));
       end
    end
-   W = S;
 
    % compute the unnormalized laplacian L
    deg = zeros(1,m);

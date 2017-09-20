@@ -16,6 +16,8 @@ function [M, idx] = kmeans(A, k)
 %  each cluster and array idx where idx(i) indicates which cluster the i-th data vector
 %  is an element of.
 
+   %A = standardizeR(A);
+
    [m,n] = size(A);
    % Q_ij is 1 if A_i is an element of the j-th cluster; otherwise, it is 0
    Q = zeros(m,k);

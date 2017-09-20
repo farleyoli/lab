@@ -17,18 +17,19 @@ function [M, idx] = unnormalized_spectral_clustering (A, k, sigma)
 %  vectors represent each cluster and array idx where idx(i) indicates which cluster the
 %  i-th data vector is an element of.
    
+   %A = standardizeR(A);
+
    [m,n] = size (A);
    M = zeros(k,n);
-   S = zeros(m,m); % similarity graph
+   W = zeros(m,m); % similarity graph
 
    % construct similarity graph (fully connected graph constructed using the Gaussian
    % similarity function)
    for(i = 1:m)
       for(j = 1:m)
-         S(i,j) = exp(-(norm(A(i,:) - A(j,:))^2)/(2*sigma*sigma));
+         W(i,j) = exp(-(norm(A(i,:) - A(j,:))^2)/(2*sigma*sigma));
       end
    end
-   W = S;
 
    % compute the unnormalized laplacian L
    deg = zeros(1,m);
@@ -43,7 +44,6 @@ function [M, idx] = unnormalized_spectral_clustering (A, k, sigma)
 
    % compute the first k eigenvectors V_1, ..., V_k of L
    % corresponding to the k smallest eigenvalues (E_11 is the smalles eigenvalue)
-   V = zeros(n, k); % eigenvalues as columns
    [V,E] = eigs(L, k, 'sm');
    E = fliplr(E);
    E = flipud(E);
@@ -67,10 +67,10 @@ function [M, idx] = unnormalized_spectral_clustering (A, k, sigma)
             n_elem = n_elem + 1;
          end
       end
-      M(i,:) = sum / n_elem;
+      if (n_elem > 0)
+         M(i,:) = sum / n_elem;
+      end
    end
-
-   idx
 
 end
 

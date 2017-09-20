@@ -18,18 +18,19 @@ function [M, idx] = normalized_spectral_clustering_SM (A, k, sigma)
 %  vectors represent each cluster and array idx where idx(i) indicates which cluster the
 %  i-th data vector is an element of. (two clusters)
    
+   %A = standardizeR(A);
+
    [m,n] = size (A);
    M = zeros(k,n);
-   S = zeros(m,m); % similarity graph
+   W = zeros(m,m); % similarity graph
 
    % construct similarity graph (fully connected graph constructed using the Gaussian
    % similarity function)
    for(i = 1:m)
       for(j = 1:m)
-         S(i,j) = exp(-(norm(A(i,:) - A(j,:))^2)/(2*sigma*sigma));
+         W(i,j) = exp(-(norm(A(i,:) - A(j,:))^2)/(2*sigma*sigma));
       end
    end
-   W = S;
 
    % compute the unnormalized laplacian L and the normalized laplacian Lsym
    deg = zeros(1,m);
@@ -40,9 +41,8 @@ function [M, idx] = normalized_spectral_clustering_SM (A, k, sigma)
    end
    D = diag(deg);
    L = D - W;
-   Dmhalf = diag(deg.^(-1/2));
-   Dhalf = diag(deg.^(1/2));
-   Lsym = Dmhalf * L * Dhalf;
+   Dhalf = diag(deg.^(-1/2));
+   Lsym = Dhalf * L * Dhalf;
 
 
    % compute the first k eigenvectors V_1, ..., V_k of Lsym
