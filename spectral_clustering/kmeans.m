@@ -79,11 +79,16 @@ function [M, idx] = kmeans(A, k)
 
    % Compute idx from Q
    for(i = 1:m)
-      if (Q(i,1) == 1)
-         idx(i) = 1;
-      elseif (Q(i,2) == 1)
-         idx(i) = 2;
-      else 
-         idx(i) = 3;
+      %if (Q(i,1) == 1)
+      %   idx(i) = 1;
+      %elseif (Q(i,2) == 1)
+      %   idx(i) = 2;
+      %else 
+      %   idx(i) = 3;
+      for (j = 1:k)
+         if Q(i,j) == 1
+            idx(i) = j;
+         end
+      end
    end
 end
