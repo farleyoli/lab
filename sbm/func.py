@@ -22,7 +22,7 @@ def create_sbm (n = 1000, cin = 7, cout = 1, q = 2):
     A = np.zeros((n,n), dtype=int)
     
     for (i,j), value in np.ndenumerate(A):
-        if i >= j:
+        if i > j:
             if labels[i] != labels[j]:
                 if np.random.rand() <= pout:
                     A[i,j] = 1
@@ -68,50 +68,50 @@ def bethe_hessian_clustering (W, k, r = 0):
 def fastge2 (W, k, constraint):
     """ Format for constraints: constraint[i] = k iff
         the i-th datum is an element of Vj. In case it is not
-        an element of any Vj, constraint[i] = 0.
+        an element of any Vj, constraint[i] = -1.
         
         Outputs:
         - idx: 
     """
     n, m = W.shape
     mu = 0.001
-    Z = np.ones((n,))
+    W = W.astype(float)
+    Z = np.ones((n,1), dtype=float)
+    Z = Z/math.sqrt(n)
 
     # Compute the Laplacian of the original graph
     d = np.sum(W, axis = 0)
-    print(d)
     D = np.diag(d)
     L = D - W
 
     # Compute Wm
-    Wml = np.zeros((n, m, k))
-    Wm = np.zeros((n, m))
+    Wm = np.zeros((n, m), dtype=float)
     for l in range(k):
         for i in range(n):
             for j in range(m):
-                if ((constraint[i] == constraint[j]) and (constraint[i] != -1)):
-                    Wml[i,j,l] = d[i]*d[j]/(d.min()*d.max())
-    for l in range(k):
-        Wm += Wml[:,:,l]
+                if ((constraint[i] == constraint[j]) and (constraint[i] == l) and (i != j)):
+                    Wm[i,j] = ((d[i])*(d[j]))/((d.min())*(d.max()))
 
     # Compute Wh
-    Wc = np.zeros((n, m))
+    Wc = np.zeros((n, m), dtype=float)
     for i in range(n):
         for j in range(m):
-            if ((constraint[i] != constraint[j]) and (constraint[i] != -1) and  (constraint[j] != -1) and (i != j)): #sorry
-                Wc[i,j] = d[i]*d[j]/(d.min()*d.max())
+            if ((constraint[i] != constraint[j]) and (constraint[i] != -1) and (constraint[j] != -1)):
+                Wc[i,j] = ((d[i])*(d[j]))/((d.min())*(d.max()))
 
-    Kc = np.zeros((n, m))
+    Kc = np.zeros((n, m), dtype=float)
     dc = np.sum(Wc, axis = 0)
+    dcc = np.sum(Wc+Wc.T, axis = 0)
     for i in range(n):
         for j in range(m):
-            Kc[i,j] = dc[i]*dc[j]/(np.sum(dc))
-    Wh = np.zeros((n, m))
-    Wh = Wc + Wc.T + Kc
+            Kc[i,j] = ((dcc[i])*(dcc[j]))/(np.sum(dcc))
+
+    Wh = np.zeros((n, m), dtype=float)
+    Wh = (Wc + Wc.T + Kc)/n
 
     # Compute Lg
     Wg = W + Wm
-    dg = np.sum(W, axis=0)
+    dg = np.sum(Wg, axis=0)
     Dg = np.diag(dg)
     Lg = Dg - Wg
 
@@ -121,23 +121,21 @@ def fastge2 (W, k, constraint):
     Lh = Dh - Wh
 
     # Compute K
-    K = -Lh
+    K = (-1)*Lh
 
     # Compute M
     M = Lg + mu*Lh + np.matmul(Z, Z.T)
 
+
     # Solve general eigenvalue problem for pencil (K,M)
-    print(K)
-    print('\n')
-    print(M)
-    print
-    Vf, Df = SLA.eigs(K, k = k, M = M)
+    Df, Vf = SLA.eigsh(K, k = k, M = M)
+
 
     # Renormalize Vf
-    for j in range(k):
-        Vf[:,j] = Vf[:,j]/LA.norm(Vf[:,j])
-    for j in range(n):
-        Vf[i,:] = Vf[i,:]/LA.norm(Vf[:,i])
+    for i in range(k):
+        Vf[:,i] = Vf[:,i]/LA.norm(Vf[:,i])
+    for i in range(n):
+        Vf[i,:] = Vf[i,:]/LA.norm(Vf[i,:])
 
     # k-means (last step)
     centroids, idx = kmeans2(Vf, k, minit='points')
@@ -153,3 +151,93 @@ def create_constraint (old_constraint, num):
             new_constraint[random] = old_constraint[random]
             num -= 1
     return new_constraint
+
+def compute_W (X, sigma = 2):
+    n = X.shape[0]
+    W = np.zeros((n,n))
+    for i in range(n):
+        for j in range(n):
+            W[i,j] = np.exp(-np.power(LA.norm(X[i,:]-X[j,:]),2)/(2 * sigma * sigma))
+    return W
+
+def fastge3 (W, k, constraint, r = 3):
+    """ Format for constraints: constraint[i] = k iff
+        the i-th datum is an element of Vj. In case it is not
+        an element of any Vj, constraint[i] = -1.
+        
+        Outputs:
+        - idx: 
+    """
+
+    n, m = W.shape
+    mu = 0.001
+    W = W.astype(float)
+    Z = np.ones((n,1), dtype=float)
+    Z = Z/math.sqrt(n)
+
+    # Compute the Laplacian of the original graph
+    d = np.sum(W, axis = 0)
+    D = np.diag(d)
+    #L = D - W
+    L = (r*r - 1)*np.eye(n) - r*W + D
+
+
+    # Compute Wm
+    Wm = np.zeros((n, m), dtype=float)
+    for l in range(k):
+        for i in range(n):
+            for j in range(m):
+                if ((constraint[i] == constraint[j]) and (constraint[i] == l) and (i != j)):
+                    Wm[i,j] = ((d[i])*(d[j]))/((d.min())*(d.max()))
+
+    # Compute Wh
+    Wc = np.zeros((n, m), dtype=float)
+    for i in range(n):
+        for j in range(m):
+            if ((constraint[i] != constraint[j]) and (constraint[i] != -1) and (constraint[j] != -1)):
+                Wc[i,j] = ((d[i])*(d[j]))/((d.min())*(d.max()))
+
+    Kc = np.zeros((n, m), dtype=float)
+    dc = np.sum(Wc, axis = 0)
+    dcc = np.sum(Wc+Wc.T, axis = 0)
+    for i in range(n):
+        for j in range(m):
+            Kc[i,j] = ((dcc[i])*(dcc[j]))/(np.sum(dcc))
+
+    Wh = np.zeros((n, m), dtype=float)
+    Wh = (Wc + Wc.T + Kc)/n
+
+    # Compute Lg
+    Wg = W + Wm
+    dg = np.sum(Wg, axis=0)
+    Dg = np.diag(dg)
+    #Lg = Dg - Wg
+    Lg = (r*r - 1)*np.eye(n) - r*Wg + Dg
+
+    # Compute Lh
+    dh = np.sum(Wh, axis=0)
+    Dh = np.diag(dh)
+    #Lh = Dh - Wh
+    Lh = (r*r - 1)*np.eye(n) - r*Wh + Dh
+
+    # Compute K
+    K = (-1)*Lh
+
+    # Compute M
+    M = Lg + mu*Lh + np.matmul(Z, Z.T)
+
+
+    # Solve general eigenvalue problem for pencil (K,M)
+    Df, Vf = SLA.eigsh(K, k = k, M = M)
+
+
+    # Renormalize Vf
+    for i in range(k):
+        Vf[:,i] = Vf[:,i]/LA.norm(Vf[:,i])
+    for i in range(n):
+        Vf[i,:] = Vf[i,:]/LA.norm(Vf[i,:])
+
+    # k-means (last step)
+    centroids, idx = kmeans2(Vf, k, minit='points')
+
+    return idx
