@@ -15,23 +15,28 @@ n_clusters = len(centers)
 #W = func.compute_W (X)
 #print(W)
 
-no = 10
+size = 1000
+no = 10 
 res = np.zeros((no,), dtype=float)
-
-for rr in np.linspace(1, 3, 200):
+result = np.zeros((size,), dtype=float)
+for m in np.arange(100, size, 10):
+    print('m: ', end=''); print(m)
     for hue in range(no):
-        r = 2 
-        m = 400
-        A, labels = func.create_sbm(n=1000,cin=20,cout=1,q=r)
+        k = 2 
+        #m = 400
+        A, labels = func.create_sbm(n = size, cin = 7, cout = 1, q = k)
         #A, labels = W, labels_true
         constraint = func.create_constraint(labels, m)
-        labels1 = func.unnorm_spec_clustering(A,r)
-        labels2 = func.bethe_hessian_clustering(A,r)
-        idx = func.fastge3 (A, r, constraint, r = rr)
+        #labels1 = func.unnorm_spec_clustering(A, k)
+        #labels2 = func.bethe_hessian_clustering(A, k, r = np.sqrt(3))
+        #idx = func.fastge3 (A, r, constraint, r = rr)
+        idx = func.fastge3 (A, k, constraint, r = np.sqrt(3))
         #idx = func.fastge2 (A, r, constraint)
         #print(func.nmi(labels,labels1))
-        #print(func.nmi(labels,labels2))
+        #print('bethe_hessian: ', end=''); print(func.nmi(labels,labels2))
         res[hue] = func.nmi(labels, idx)
         #print(func.nmi(labels, idx), end=', ')
-    print(res.mean(), end=", ")
-    print(rr)
+        #print('hue:', end=' ')
+        #print(hue)
+    result[m] = res.mean()
+    print('fastge3: ', end=''); print(res.mean())

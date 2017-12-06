@@ -31,6 +31,8 @@ def create_sbm (n = 1000, cin = 7, cout = 1, q = 2):
                 if np.random.rand() <= pin:
                     A[i,j] = 1
                     A[j,i] = 1
+    for i in range(n):
+        A[i,i] = 1
     return A, labels
 
 def unnorm_spec_clustering (W, k):
@@ -217,8 +219,8 @@ def fastge3 (W, k, constraint, r = 3):
     # Compute Lh
     dh = np.sum(Wh, axis=0)
     Dh = np.diag(dh)
-    #Lh = Dh - Wh
-    Lh = (r*r - 1)*np.eye(n) - r*Wh + Dh
+    Lh = Dh - Wh
+    #Lh = (r*r - 1)*np.eye(n) - r*Wh + Dh
 
     # Compute K
     K = (-1)*Lh
