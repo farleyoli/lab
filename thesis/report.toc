@@ -1,0 +1,14 @@
+\select@language {english}
+\contentsline {chapter}{\numberline {Chap. 1}Introduction}{1}
+\contentsline {section}{\numberline {1.1}Notation}{1}
+\contentsline {chapter}{\numberline {Chap. 2}Spectral Clustering}{2}
+\contentsline {section}{\numberline {2.1}The clustering problem}{2}
+\contentsline {section}{\numberline {2.2}Preliminary definitions}{3}
+\contentsline {section}{\numberline {2.3}The ideal case approach}{4}
+\contentsline {section}{\numberline {2.4}The relaxation approach}{6}
+\contentsline {chapter}{\numberline {Chap. 3}Spectral Clustering with the Bethe Hessian}{8}
+\contentsline {chapter}{\numberline {Chap. 4}Constrained Spectral Clustering with FAST-GE2}{9}
+\contentsline {chapter}{\numberline {Chap. 5}Proposed Method}{10}
+\contentsline {chapter}{\numberline {Chap. 6}Experiments}{11}
+\contentsline {chapter}{\hbox to\@lnumwidth {\hfil }Acknowledgements}{12}
+\contentsline {chapter}{\hbox to\@lnumwidth {\hfil }References}{13}

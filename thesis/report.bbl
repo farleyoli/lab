@@ -1,0 +1,15 @@
+\begin{thebibliography}{1}
+
+\bibitem{mahoney}
+M.~W. {Mahoney}.
+\newblock {Lecture Notes on Spectral Graph Methods}.
+\newblock {\em ArXiv e-prints}, August 2016.
+
+\bibitem{ng}
+Andrew~Y. Ng, Michael~I. Jordan, and Yair Weiss.
+\newblock On spectral clustering: Analysis and an algorithm.
+\newblock In T.~G. Dietterich, S.~Becker, and Z.~Ghahramani, editors, {\em
+  Advances in Neural Information Processing Systems 14}, pages 849--856. MIT
+  Press, 2002.
+
+\end{thebibliography}

@@ -1,0 +1,452 @@
+%%
+%\begin{figure}[htbp]
+%\begin{center}
+%\includegraphics[width=3cm]{sample.eps}
+%\psfig{file=sample.eps,scale=0.6}
+%\epsfile{file=sample.eps,scale=0.6}
+%\end{center}
+%\caption{図の例}
+%\label{figure:sample}
+%\end{figure}
+
+
+% このファイルは、筑波大学情報学群情報科学類の
+% 卒業研究論文本体のサンプルです。
+% このファイルを書き換えて、この例と同じような書式の論文本体を
+% LaTeXを使って作成することができます。
+% 
+% PC環境や、LaTeX環境の設定によっては漢字コードや改行コードを
+% 変更する必要があります。
+%%
+\documentclass[a4paper,11pt]{jreport}
+
+%%【PostScript, JPEG, PNG等の画像の貼り込み】
+%% 利用するパッケージを選んでコメントアウトしてください。
+\usepackage{graphicx} % for \includegraphics[width=3cm]{sample.eps}
+%\usepackage{epsfig} % for \psfig{file=sample.eps,width=3cm}
+%\usepackage{epsf} % for \epsfile{file=sample.eps,scale=0.6}
+%\usepackage{epsbox} % for \epsfile{file=sample.eps,scale=0.6}
+% MATH
+\usepackage{amsmath}
+\usepackage{amsfonts}
+
+%% dvipdfm を使う場合(dvi->pdfを直接生成する場合)
+%\usepackage[dvipdfm]{color,graphicx}
+%% dvipdfm を使ってPDFの「しおり」を付ける場合
+%\usepackage[dvipdfm,bookmarks=true,bookmarksnumbered=true,bookmarkstype=toc]{hyperref}
+%% 参考：dvipdfm 日本語版
+%% http://hamilcar.phys.kyushu-u.ac.jp/~hirata/dvipdfm/
+
+\usepackage[left=25truemm,top=35truemm,right=25truemm,bottom=50truemm]{geometry}
+\usepackage{times} % use Times Font instead of Computer Modern
+
+\setcounter{tocdepth}{3}
+\setcounter{page}{-1}
+
+\setlength{\parskip}{0em}
+\setlength{\topsep}{0em}
+
+%\newcommand{\zu}[1]{{\gt \bf 図\ref{#1}}}
+
+%% タイトル生成用パッケージ(重要)
+\usepackage{coins-jp-utf8}
+
+%% タイトル
+%% 【注意】タイトルの最後に\\ を入れるとエラーになります
+\title{Title of the Thesis}
+%% 著者
+\author{Farley Oliveira}
+%% 指導教員
+\advisor{櫻井鉄也}
+
+%% 専攻名 と 年月 (提出年月)
+%% 年月は必要に応じて書き替えてください。
+\heiseiyear{29}  % 平成の年度
+\majorfield{ソフトウェアサイエンス主専攻}
+%\majorfield{情報システム主専攻}
+%\majorfield{知能情報メディア主専攻}
+\usepackage[english]{babel}
+\renewcommand{\prechaptername}{Chap. }
+\renewcommand{\postchaptername}{}
+
+
+% NORM
+\newcommand\norm[1]{\left\lVert#1\right\rVert}
+
+
+% Integer Intervals
+\usepackage{mathtools, stmaryrd}
+\usepackage{xparse} \DeclarePairedDelimiterX{\Iintv}[1]{\llbracket}{\rrbracket}{\iintvargs{#1}}
+\NewDocumentCommand{\iintvargs}{>{\SplitArgument{1}{,}}m}
+{\iintvargsaux#1} %
+\NewDocumentCommand{\iintvargsaux}{mm} {#1\mkern1.5mu, \mkern1.5mu#2}
+
+% THEOREM NADO
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\newenvironment{proof}[1][Proof]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{definition}[1][Definition]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{example}[1][Example]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{remark}[1][Remark]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+
+\newcommand{\qed}{\nobreak \ifvmode \relax \else
+      \ifdim\lastskip<1.5em \hskip-\lastskip
+      \hskip1.5em plus0em minus0.5em \fi \nobreak
+      \vrule height0.75em width0.5em depth0.25em\fi}
+
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+\newpage
+
+\thispagestyle{empty}
+\vspace*{20pt plus 1fil}
+\parindent=1zw
+\noindent
+%%
+%% 論文の概要(Abstract)
+%%
+\begin{center}
+{\Large \bf Abstract}
+\vspace{2cm}
+\end{center}
+Here you write the abstract of your thesis.
+
+%%%%%
+\par
+\vspace{0pt plus 1fil}
+\newpage
+
+\pagenumbering{roman} % I, II, III, IV 
+\tableofcontents
+\listoffigures
+%\listoftables
+
+\pagebreak \setcounter{page}{1}
+\pagenumbering{arabic} % 1,2,3
+
+
+\chapter{Introduction}
+
+
+\section{Notation}
+
+\chapter{Spectral Clustering}
+%%%% The reader may skip this section (...). %%%%
+Here we define the clustering problem, describe general ways in which it can be solved, and introduce
+spectral clustering as a solution to this problem which uses the variational theorem.
+Readers who are already familiar with the derivation of spectral clustering may feel free to skip this chapter. 
+
+\section{The clustering problem}
+
+% How is the clustering problem defined?
+Clustering is the most popular way of conducting unsupervised learning currently. 
+Given a dataset $\mathcal D$, the objective of clustering is to find a partition of $\mathcal D$, $(\mathcal P_1, \mathcal P_2, \cdots, \mathcal P_k)$, where $k \in \mathbb N^*$ is predetermined by the user of the algorithm, such that the similarity of elements of a same subset $\mathcal P_i$  $(i \in \Iintv{1,k})$ are as big as possible and the similarity of elements of different subsets $\mathcal P_i$ and $\mathcal P_j$ $((i,j) \in \Iintv{1,k}^2, i \ne j)$ are as small as possible. 
+In other words, a clustering algorithm assigns a label $l \in \Iintv{1,k}$ to each data instance in $\mathcal D$ in such a way that data instances which are similar to each other are assigned the same label.
+The way the similarity of elements of a same subset and the similarity of elements of different subsets are calculated depends on the clustering algorithm used. 
+We can say the same about the way in which the dataset $\mathcal D$ is represented.
+
+% What are some non-spectral ways of doing clustering?
+Clustering may be achieved by several different approaches, each with its own advantages and disadvantages.
+Some models and approaches for clustering are as follows:
+\begin{itemize}
+   \item Strict partioning clustering: each data instance is classified into one cluster based on its similarity with other instances.
+      The main approach for this type of clustering is k-means: the algorithm works by iteratively assigning a label to each data instance based on its similarity with each cluster.
+      Here, the similarity of a data instance and a cluster is obtained by computing the similarity between the instance and some kind of representative data instance of the cluster, usually some kind of mean vector.
+   \item Hierarchical clustering: the data is divided in clusters which make up a hierarchy.
+      This type of clustering may be achieved by two main approaches: the agglomerative approach, where each data instance starts in its own cluster, and pairs of clusters are merged as we go up in the hierarchy; and the divisive approach, where all data instances start in a same cluster, and clusters are split as we go down the hierarchy.
+      One advantage of hierarchical clustering is that the algorithm user does not need to set the number of subsets $k$ ahead of time.
+   \item Overlapping clustering: In the final result, each data instance may be an element of more than one cluster.
+      In other words, $(\mathcal P_1, \mathcal P_2, \cdots, \mathcal P_k)$ is not necessarily a partition of $\mathcal D$.
+      This approach may be useful when certain data instances naturally pertain to more than one class.
+\end{itemize}
+
+% Spectral Clustering? What are the characteristics (advantages) of a spectral approach?
+In contrast to the approaches above, spectral clustering works by transforming the data into a graph, constructing a certain matrix associated to this graph called Laplacian, computing the eigenvalues and eigenvectors of the Laplacian, and finally using this eigeninformation to classify the data.
+Although spectral clustering is often more difficult to implement (requiring, e.g., an algorithm to efficiently solve an eigenproblem), it is more general than the more common approaches such as k-means and hierarchial clustering.
+This is because spectral clustering may be succesfuly used for data that are arranged in complex shapes (as long as each cluster is connected), since the data is first mapped from their native data space to another one in which connectivity is preserved but geometrical relationships are simplified.
+
+% What are the two forms spectral clustering can be derived?
+There are two main approaches with which spectral clustering can be derived.
+The first approach, the \textit{ideal case} approach, considers regular Laplacian matrices as perturbations of an ideal case in which data points that are to be classified into different clusters are infinitely far apart.
+The second approach, the \textit{relaxation} approach, considers spectral clustering as a approximation algorithm to solve a original NP-hard discrete optimization problem.
+The first approach is related to the FAST-GE2 algorithm, and the second one is related to the Bethe Hessian spectral clustering algorithm, both of which will be discussed henceforth in this thesis.
+For this reason, we will explain both approaches in this chapter.
+
+\section{Preliminary definitions}
+Before entering in the discussion of each derivation, we will give some definitions common to both approaches.
+Here we will assume that each data instance $d \in \mathcal D$ is a $n$ dimensional column vector, i.e. $\mathcal D \subset \mathbb R^n$.
+
+\begin{definition}
+   Let $\mathcal D$ be a dataset containing $m$ elements. The \textit{similarity matrix} $A \in \mathbb{R}^{m \times m}$ associated with $\mathcal D$ is defined as follows: 
+   \begin{equation}
+      A_{ij} = s(d_i,d_j), \text{ for each } (i,j) \in \Iintv{1,m}^2,
+   \end{equation}
+   where $s$ is a similarity measure and $d_i \in \mathcal D$ for each $i \in \Iintv{1,m}$.
+   In this thesis, we will mainly use the \textit{Gaussian similarity measure}, which is given by 
+   \begin{equation}
+      s(x, y) = \exp \left( -\frac{1}{2 \sigma ^2} {\norm{x - y}}^2 \right),
+   \end{equation}
+   where $x$ and $y$ are elements of a normed vector space and $\sigma \in \mathbb R$ is a parameter set by the user which controls the width of the neighborhoods.
+\end{definition}
+
+We can think of the similarity matrix above as encoding a weighted graph $G_{\mathcal D} = (V_{\mathcal D}, E_{\mathcal D})$ representing the dataset $\mathcal D$. 
+In this case, each element $A_{ij}$ of $A$ represents the weight of an edge connecting the vertices $(v_i, v_j) \in {V_{\mathcal D}}^2$.
+
+\begin{definition}
+   Let $A \in \mathbb R ^{m \times m}$ be a similarity matrix and $G_{\mathcal D} = (V_{\mathcal D}, E_{\mathcal D})$ be the graph associated with a dataset $\mathcal D$. The \textit{unnormalized Laplacian matrix} of the graph $G_{\mathcal D}$ is defined by
+   \begin{equation}
+      L_0 = D - A,
+   \end{equation}
+   where $D \in \mathbb R ^{m \times m}$ is defined to be the diagonal matrix whose $D_{ii}$ $(i \in \Iintv{1,m})$ elements are given by the sum of the elements of the matrix $A$'s $i$-th row.  
+\end{definition}
+
+\begin{definition}\label{unnormalized}
+   Let $L_0 \in \mathbb R ^{m \times m}$ be the unnormalized Laplacian matrix of, and $G_{\mathcal D} = (V_{\mathcal D}, E_{\mathcal D})$ be the graph associated with, a dataset $\mathcal D$. The \textit{normalized Laplacian matrix} of the graph $G_{\mathcal D}$ is defined by
+   \begin{equation}
+      L = D^{-1/2}L_0D^{-1/2},
+   \end{equation}
+   where $D \in \mathbb R ^{m \times m}$ is defined to be the diagonal matrix whose $D_{ii}$ $(i \in \Iintv{1,m})$ elements are given by the sum of the elements of the matrix $A$'s $i$-th row.  
+\end{definition}
+
+\section{The ideal case approach}
+Here we will consider the ideal case for spectral clustering where $A_{ij} = 0$ whenever $d_i$ and $d_j$ $((i,j) \in \Iintv{1,m}^2)$ are in different clusters and $A_{ij} > 0$ otherwise.
+For convenience, we will only consider the case where the number of clusters $k$ is $3$ and we will assume that $d_i \in \mathcal D$, for $i \in \Iintv{1,m}$, are ordered in such a way that $i < j$ whenever the label of $d_i$ is smaller than the label of $d_j$ (remember that the labels $l$ are elements of $\Iintv{1,k}$).
+The argument, however, can be easily extended to a general case.
+
+In this section, for algebraic convenience, we will use an alternative definition for the unnormalized Laplacian matrix: $L_{\text{new}} = D^{-1/2}AD^{-1/2}$, instead of $L = D^{-1/2}L_0D^{-1/2}$.
+The use of this trick is justified by the fact that, since $L_0 = D - A$, we have that $L_{\text{new}} + L = I_m$, where $I_m$ is the identity matrix of order $m$.
+Therefore $L_{\text{new}}$ and $L$ possess the same eigenvectors, and, for each $i \in \Iintv{1,m}$, if $\lambda _i$ is an eigenvalue of $L$, then $1 - \lambda _i$ is an eigenvalue of $L_{\text{new}}$. 
+Outside of this section, however, we will use the normal definition of unnormalized Laplacian as given in the previous section.
+
+Before entering the derivation, we need to outline a result.
+
+\begin{proposition}
+   \label{bigeigenvalue}
+   Let $\mathcal D$ be a dataset such that its associated graph $G_{\mathcal D}$ is connected.
+   Then the normalized Laplacian associated with $\mathcal D$ has the eigenvalue $1$ with positive eigenvector.
+   Furthermore, all the other eigenvalues are strictly smaller than $1$.
+\end{proposition}
+This is a basic result in spectral graph theory.
+A proof may be found in, e.g., \cite{mahoney}.
+
+Since $A_{ij} = 0$ whenever $d_i$ and $d_j$ are in different clusters, $A \in \mathbb{R} ^{m \times m}$ (where $m$ is the number of data instances in $\mathcal D$) may be expressed as a block matrix as follows:
+\begin{equation}
+   A = 
+   \begin{bmatrix}
+      A^{(1)} & 0_{m_1 \times m_2} & 0_{m_1 \times m_3} \\
+      0_{m_2 \times m_1} & A^{(2)} & 0_{m_2 \times m_3} \\
+      0_{m_3 \times m_1} & 0_{m_3 \times m_2} & A^{(3)}
+   \end{bmatrix}.
+\end{equation}
+Here, all the elements of the three matrices $A^{(1)} \in \mathbb R^{m_1 \times m_1}$, $A^{(2)} \in \mathbb R^{m_2 \times m_2}$ and $A^{(3)} \in \mathbb R ^{m_3 \times m_3}$ are strictly positive (that is, all their elements are strictly positive) and we have that $m_1+m_2+m_3 = m$. 
+From now on, to avoid verbosity, we will omit the subscripts of the $0$ matrices.
+
+It is easy to see from the definitions that the normalized Laplacian $L$ and the diagonal matrix $D$ can be expressed as block matrices in a similar way:
+\begin{equation}
+ D =
+   \begin{bmatrix}
+      D^{(1)} & 0 & 0 \\
+      0 & D^{(2)} & 0 \\
+      0 & 0 & D^{(3)}
+   \end{bmatrix}
+   \,\,\,\,\,\text{ and }\,\,\,\,\,
+   L = 
+   \begin{bmatrix}
+      L^{(1)} & 0 & 0 \\
+      0 & L^{(2)} & 0 \\
+      0 & 0 & L^{(3)}
+   \end{bmatrix},
+\end{equation}
+where $D^{(1)} \in \mathbb R ^{m_1 \times m_1}$, $D^{(2)} \in \mathbb R ^{m_2 \times m_2}$ and $D^{(3)} \in \mathbb R ^{m_3 \times m_3}$ are themselves diagonal matrices and $L^{(1)} \in \mathbb R ^{m_1 \times m_1}$, $L^{(2)} \in \mathbb R ^{m_2 \times m_2}$ and $L^{(3)} \in \mathbb R ^{m_3 \times m_3}$ are strictly positive normalized Laplacians of each element of the partition $(\mathcal P_1, \mathcal P_2, \mathcal P_3)$.
+Here, the following relation holds for each $i \in \{1, 2, 3 \}$:
+\begin{equation}
+   L^{(i)} = \left( D^{(i)} \right) ^{-1/2} A^{(i)} \left( D^{(i)} \right) ^{-1/2}.
+\end{equation}
+
+Since the matrix $L$ is block-diagonal, its set of eigenvalues $\sigma _L$ is given by the union of the set of eigenvalues of each block $L_1$, $L_2$ and $L_3$, respectively $\sigma_{L_1}$, $\sigma_{L_2}$ and $\sigma_{L_3}$.
+Furthermore its eigenvectors are the same as the ones of $L_1$, $L_2$ and $L_3$, provided that they are ``extended'' with $0$ elements as necessary. 
+The proof of this claim may also be found in \cite{mahoney}.
+
+By proposition \ref{bigeigenvalue}, we know that each $L^{(i)}$ ($i \in \{1, 2, 3 \}$) has $1$ as an eigenvalue with positive eigenvector, which we denote by $x_1^{(i)} \in {\mathbb R_{>0}}^{m_i} $. Furthermore, all other eigenvalues of each $L^{(i)}$ are smaller than $1$.
+This implies that $L$ has $1$ as an eigenvalue with multiplicity $3$.
+Let $X$ be the matrix containing the eigenvectors associated with these eigenvalues. We have that 
+\begin{equation}
+   X =
+   \begin{bmatrix}
+      x_1^{(1)} & 0 & 0 \\
+      0 & x_1^{(2)} & 0 \\
+      0 & 0 & x_1^{(3)}
+   \end{bmatrix}
+   \in \mathbb R^{m \times 3}.
+\end{equation}
+
+However, from elementary linear algebra, we know that for a Hermitian matrix if $v_1$ and $v_2$ are two eigenvectors associated with a certain eigenvalue, so is $\alpha v_1 + \beta v_2$, with $(\alpha, \beta) \in \mathbb R ^2$.
+Since the normalized Laplacian is Hermitian, we could have picked any other $3$ eigenvectors spanning the same subspace as the ones above.
+The actual eigenvectors we obtain may depend on the small perturbations in the normalized Laplacian and the eigensolver used.
+This means that we could have gotten $XR$ instead of $X$, for any orthogonal matrix $R \in \mathbb{R}^{3 \times 3}$.
+Therefore, we make the transformation $X \longmapsto XR$ to the matrix above in our analysis.
+
+By normalizing the rows of the matrix $X$, we construct the matrix $Y \in \mathbb{R}^{m \times 3}$ as follows:
+\begin{equation}\label{y}
+   Y = 
+   \begin{bmatrix}
+      1_{m_1 \times 1} & 0 & 0 \\
+      0 & 1_{m_2 \times 1} & 0 \\
+      0 & 0 & 1_{m_3 \times 1} 
+   \end{bmatrix}R.
+\end{equation}
+
+If we let ${R_1}^T \in \mathbb{R}^{1 \times 3}$, ${R_2}^T \in \mathbb{R}^{1 \times 3}$ and ${R_3}^T \in \mathbb{R}^{1 \times 3}$ represent the rows of the matrix $R$, equation (\ref{y}) tells us that the $i$-th row of $Y$ is given by ${R_j} ^T$, where $i \in \Iintv{1,m}$, $j \in \{1, 2, 3 \}$ and $d_i \in \mathcal P_j$ (i.e. the label of the $i$-th data instance is $j$).
+
+As a result, the rows of the matrix $Y$ related to the same label $i$ will cluster in the same point ${R_i}^T$.
+Furthermore, from the fact that $R$ is an orthogonal matrix, we deduce that rows of $Y$ corresponding to different labels will cluster in points (in the unit sphere) that are perpendicular to each other. 
+This permits us to use the rows of the matrix $Y$ to easily recover the labels of each $d_i \in \mathcal D$, with $i \in \Iintv{1,m}$, by e.g. applying the k-means algorithm to these rows.
+
+Needless to say, most matrices we deal with are not in the ideal form we assumed they were in this section's discussion.
+However, we can think of a general matrix $A$ as being of the norm $A = A_{\text{ideal}} + E$, where $A_{\text{ideal}}$ is a matrix in the ideal form we discussed in this section and $E$ represents the perturbation from the ideal case.
+As long as the norm of $E$ is small enough, it is possible to prove that a spectral algorithm based on the approach of this section works.
+A more detailed description of the approach used in this section can be found in \cite{ng}.
+
+
+\section{The relaxation approach}
+In this section we will derive the same spectral clustering as the one in the last section by framing the clustering problem as a discrete optimization problem and relaxing it so it is not discrete anymore.
+Before doing that, however, we need to give some definitions and outline some preliminary results.
+
+% Define Cut and RatioCut
+\begin{definition}
+   Let $G = (V,E)$ be a graph with adjacency matrix $A \in \mathbb R^{m \times m}$, where $m = |V|$, and $C$ be a subset of the set of vertices $V$. 
+   Set $\overline{C} = V \setminus C$.
+   The \textit{cut} of the subset $C$ is defined as follows:
+   \begin{equation}
+      \text{cut}\, (C) = \sum_{\substack{v_i \in C \\ v_j \notin \overline C }} A_{ij}.
+   \end{equation}
+\end{definition}
+
+The cut of a set of vertices $C$ is a measure of how much the elements of $C$ are connected with the vertices of $\overline C$.
+For that reason, it is minimized when $C$ is a separated component. 
+One may try, then, to conduct clustering by minimizing the cut of the several elements of a partition of $V$.
+However, a problem with this idea is that an eventual algorithm trying to achieve this objective might minimize the cut by separating individual vertices from the rest of the graph, which is not what we desire.
+A possible approach to deal with this complication is to normalize the cut in such a way that small clusters are ``penalized''.
+This leads to the next definition:
+
+\begin{definition}
+   Let $G = (V,E)$ be a graph with adjacency matrix $A \in \mathbb R^{m \times m}$, where $m = |V|$, and let $(C_1, C_2, \cdots, C_k)$, where $k \in \Iintv{1,m}$, be a partition of the set of vertices $V$.
+   The \textit{RatioCut} of the partition $(C_1, C_2, \cdots, C_k)$ is defined as the following quantity:
+   \begin{equation}
+      \text{RatioCut}\, (C_1, C_2, \cdots, C_k) = \sum _{i = 1}^k \frac{\text{cut}\, (C_i)}{|C_i|}.
+   \end{equation}
+\end{definition}
+
+In the following propositions, we will show a useful form for expressions of the type $x^TLx$, where $L$ is a Laplacian matrix and $x$ is a indicator vector.
+As we will see later, this will come handy when we want to find relationships between Laplacian matrices and the RatioCut of certain partitions.
+
+\begin{proposition}
+   Let $G = (V,E)$ be a graph with adjacency matrix $A \in \mathbb R^{m \times m}$, where $m = |V|$, $L_0$ be the unnormalized Laplacian matrix associated with $G$, and $x \in \mathbb R^m$ be a real vector. Then
+   \begin{equation}
+      x^TL_0x = \frac{1}{2}\sum_{i,j = 1}^m A_{ij} (x_i - x_j)^2.
+   \end{equation}
+\end{proposition}
+
+\begin{proof}
+   \begin{equation*} 
+      \begin{split}
+         x^T L_0 x &= x^TDx - x^TAx \\
+         &= \sum_{i=1}^m {x_i}^2 D_{ii} - \sum_{i,j = 1}^m x_i x_j A_{ij}  \\
+         &= \frac{1}{2} \left( \sum_{i=1}^m {x_i}^2 D_{ii} - 2\sum_{i,j = 1}^m x_i x_j A_{ij} +  \sum_{i=1}^m {x_i}^2 D_{ii}\right) \\
+         &= \frac{1}{2} \left( \sum_{i=1}^m {x_i}^2 \left( \sum_{j=1}^m A_{ij} \right) - 2\sum_{i,j = 1}^m x_i x_j A_{ij} +  \sum_{i=1}^m {x_i}^2 \left( \sum_{j=1}^m A_{ij} \right) \right) \\
+         &= \frac{1}{2} \left( \sum_{i,j=1}^m (x_i^2 - 2x_ix_j + x_j^2) A_{ij} \right) \\
+         &= \frac{1}{2} \sum_{i,j=1}^m A_{ij} (x_i-x_j)^2. \qed
+      \end{split}
+   \end{equation*}
+\end{proof}
+
+
+
+
+% What are the two variational principles?
+
+
+
+% Explain objective of Spectral Clustering using RatioCut (caso k = n)
+
+% Prova de Spectral Clustering (caso k = 2 e cite caso k = n)
+
+
+\chapter{Spectral Clustering with the Bethe Hessian}
+
+
+\chapter{Constrained Spectral Clustering with FAST-GE2}
+
+
+\chapter{Proposed Method}
+
+
+\chapter{Numerical Experiments}
+
+
+%\begin{description} \parskip=1pt
+%\item{題目: }
+%題目は{\tt $\backslash$title} に記述する。行替えを行う場合は$\backslash$
+%	   $\backslash$ を入力する。ただし、題目の最後に$\backslash$
+%	   $\backslash$ を入力するとコンパイルが通らなくなるので注意する。
+%	   なお、4行以上の題目の場合、表紙ページがあふれるためスタイルファ
+%	   イル``coins-jp.sty''を変更する必要がある。
+%\item{年度: }
+%年度は{\tt $\backslash$heiseiyear} に記述する。年度は提出時のものを記述すること。年号が変わった場合はスタイルファイル``coins-jp.sty''を変更する必要がある。
+%\end{description}
+
+
+
+
+
+\chapter*{Acknowledgements}
+\addcontentsline{toc}{chapter}{\numberline{}Acknowledgements}
+
+\newpage
+
+\addcontentsline{toc}{chapter}{\numberline{}References}
+\renewcommand{\bibname}{References}
+
+%% 参考文献に jbibtex を使う場合
+\bibliographystyle{plain}
+\bibliography{report}{}
+%% [compile] jbibtex sample; platex sample; platex sample;
+
+%% 参考文献を直接ファイルに含めて書く場合
+%\begin{thebibliography}{1}
+%\bibitem{mahoney}
+%%野寺隆志.
+%\newblock  \LaTeX.
+%\newblock 共立出版, 1990.
+
+%\bibitem{JiyuuJizai}
+%磯崎秀樹.
+%\newblock \LaTeX 自由自在.
+%\newblock サイエンス社, July 1992.
+
+%\bibitem{bryant-ieeetc86}
+%Randal~E. Bryant.
+%\newblock Graph-based algorithms for {B}oolean function manipulation.
+%\newblock {\em IEEE Transactions on Computers}, Vol. C-35, No.~8, pp. 677--691,
+%  August 1986.
+%\end{thebibliography}
+
+%% E o que esta aqui embaixo, voce coloca no meio da tese.
+
+%詳しくは参考書など(少し古い)\cite{RakRak}\cite{JiyuuJizai}を参照のこと。
+%また、奥村晴彦氏の「日本語\TeX 情報(Japanese TeX FAQ)」
+%http://www.matsusaka-u.ac.jp/\~{}okumura/texfaq/ は、日本語の\TeX に関す
+%る情報が充実している。また、具体的な論文としての文献参照例として
+%\cite{bryant-ieeetc86}を挙げておく。
+
+\end{document}

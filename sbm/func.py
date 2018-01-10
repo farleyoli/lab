@@ -162,7 +162,7 @@ def compute_W (X, sigma = 2):
             W[i,j] = np.exp(-np.power(LA.norm(X[i,:]-X[j,:]),2)/(2 * sigma * sigma))
     return W
 
-def fastge3 (W, k, constraint, r = 3):
+def fastge3 (W, k, constraint, r = 3, choice = 5):
     """ Format for constraints: constraint[i] = k iff
         the i-th datum is an element of Vj. In case it is not
         an element of any Vj, constraint[i] = -1.
@@ -213,14 +213,18 @@ def fastge3 (W, k, constraint, r = 3):
     Wg = W + Wm
     dg = np.sum(Wg, axis=0)
     Dg = np.diag(dg)
-    #Lg = Dg - Wg
-    Lg = (r*r - 1)*np.eye(n) - r*Wg + Dg
+    if choice == 5:
+        Lg = Dg - Wg
+    else:
+        Lg = (r*r - 1)*np.eye(n) - r*Wg + Dg
 
     # Compute Lh
     dh = np.sum(Wh, axis=0)
     Dh = np.diag(dh)
-    Lh = Dh - Wh
-    #Lh = (r*r - 1)*np.eye(n) - r*Wh + Dh
+    if choice == 4:
+        Lh = Dh - Wh
+    else:
+        Lh = (r*r - 1)*np.eye(n) - r*Wh + Dh
 
     # Compute K
     K = (-1)*Lh
