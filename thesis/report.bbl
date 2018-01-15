@@ -1,5 +1,17 @@
 \begin{thebibliography}{1}
 
+\bibitem{minmax}
+Haim Avron, Esmond Ng, and Sivan Toledo.
+\newblock A generalized courant-fischer minimax theorem.
+\newblock 2008.
+
+\bibitem{fastge2}
+Chengming Jiang, Huiqing Xie, and Zhaojun Bai.
+\newblock Robust and efficient computation of eigenvectors in a generalized
+  spectral method for constrained clustering.
+\newblock In {\em Artificial Intelligence and Statistics}, pages 757--766,
+  2017.
+
 \bibitem{mahoney}
 M.~W. {Mahoney}.
 \newblock {Lecture Notes on Spectral Graph Methods}.
@@ -11,5 +23,16 @@ Andrew~Y. Ng, Michael~I. Jordan, and Yair Weiss.
 \newblock In T.~G. Dietterich, S.~Becker, and Z.~Ghahramani, editors, {\em
   Advances in Neural Information Processing Systems 14}, pages 849--856. MIT
   Press, 2002.
+
+\bibitem{normalized}
+Jianbo Shi and Jitendra Malik.
+\newblock Normalized cuts and image segmentation.
+\newblock {\em IEEE Transactions on pattern analysis and machine intelligence},
+  22(8):888--905, 2000.
+
+\bibitem{tutorial}
+Ulrike Von~Luxburg.
+\newblock A tutorial on spectral clustering.
+\newblock {\em Statistics and computing}, 17(4):395--416, 2007.
 
 \end{thebibliography}
