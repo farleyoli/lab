@@ -10,11 +10,15 @@
 \contentsline {subsection}{\numberline {2.4.2}Derivation}{10}
 \contentsline {chapter}{\numberline {Chap. 3}Spectral Clustering with the Bethe Hessian}{13}
 \contentsline {chapter}{\numberline {Chap. 4}Constrained Spectral Clustering with FAST-GE2}{14}
-\contentsline {section}{\numberline {4.1}Introduction}{14}
-\contentsline {section}{\numberline {4.2}Constrained Clustering}{14}
-\contentsline {section}{\numberline {4.3}FAST-GE-2.0}{15}
-\contentsline {subsection}{\numberline {4.3.1}Auxiliary graphs}{15}
-\contentsline {chapter}{\numberline {Chap. 5}Proposed Method}{17}
-\contentsline {chapter}{\numberline {Chap. 6}Numerical Experiments}{18}
-\contentsline {chapter}{\hbox to\@lnumwidth {\hfil }Acknowledgements}{19}
-\contentsline {chapter}{\hbox to\@lnumwidth {\hfil }References}{20}
+\contentsline {section}{\numberline {4.1}Constrained Clustering}{14}
+\contentsline {section}{\numberline {4.2}FAST-GE-2.0}{15}
+\contentsline {subsection}{\numberline {4.2.1}Auxiliary graphs}{15}
+\contentsline {subsection}{\numberline {4.2.2}Objective function}{17}
+\contentsline {subsection}{\numberline {4.2.3}Eigenproblem formulation}{18}
+\contentsline {chapter}{\numberline {Chap. 5}Proposed Method}{23}
+\contentsline {chapter}{\numberline {Chap. 6}Numerical Experiments}{24}
+\contentsline {section}{\numberline {6.1}Clustering Evaluation}{24}
+\contentsline {subsection}{\numberline {6.1.1}Normalized Mutual Information}{24}
+\contentsline {section}{\numberline {6.2}Experiment 1: }{24}
+\contentsline {chapter}{\hbox to\@lnumwidth {\hfil }Acknowledgements}{25}
+\contentsline {chapter}{\hbox to\@lnumwidth {\hfil }References}{26}

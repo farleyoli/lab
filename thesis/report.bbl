@@ -5,6 +5,18 @@ Haim Avron, Esmond Ng, and Sivan Toledo.
 \newblock A generalized courant-fischer minimax theorem.
 \newblock 2008.
 
+\bibitem{templates}
+Zhaojun Bai, James Demmel, Jack Dongarra, Axel Ruhe, and Henk Van Der~Vorst.
+\newblock Templates for the solution of algebraic eigenvalue problems.
+\newblock {\em Numerical Algorithms}, 27(4):388, 2001.
+
+\bibitem{fastge1}
+Mihai Cucuringu, Ioannis Koutis, Sanjay Chawla, Gary Miller, and Richard Peng.
+\newblock Simple and scalable constrained clustering: A generalized spectral
+  method.
+\newblock In {\em Artificial Intelligence and Statistics}, pages 445--454,
+  2016.
+
 \bibitem{fastge2}
 Chengming Jiang, Huiqing Xie, and Zhaojun Bai.
 \newblock Robust and efficient computation of eigenvectors in a generalized

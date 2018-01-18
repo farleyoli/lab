@@ -31,9 +31,11 @@
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{varioref}
+\usepackage[shortlabels]{enumitem}
 
 
 \DeclareMathOperator{\cut}{cut\,}
+\DeclareMathOperator{\spn}{span\,}
 \DeclareMathOperator*{\vol}{vol\,}
 \DeclareMathOperator*{\ncut}{Ncut\,}
 \DeclareMathOperator*{\argmin}{\arg\!\min}
@@ -63,7 +65,7 @@
 
 %% タイトル
 %% 【注意】タイトルの最後に\\ を入れるとエラーになります
-\title{Title of the Thesis}
+\title{\underline{Extending the use of the Bethe Hessian} \underline{to Constrained Spectral Clustering}}
 %% 著者
 \author{Farley Soares Oliveira}
 %% 指導教員
@@ -107,7 +109,6 @@
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{proposition}[theorem]{Proposition}
 \newtheorem{corollary}[theorem]{Corollary}
-
 \newenvironment{proof}[1][Proof]{\begin{trivlist}
 \item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
 \newenvironment{definition}[1][Definition]{\begin{trivlist}
@@ -116,7 +117,6 @@
 \item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
 \newenvironment{remark}[1][Remark]{\begin{trivlist}
 \item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
-
 \newcommand{\qed}{\nobreak \ifvmode \relax \else
       \ifdim\lastskip<1.5em \hskip-\lastskip
       \hskip1.5em plus0em minus0.5em \fi \nobreak
@@ -173,14 +173,14 @@ Readers who are already familiar with the derivation of spectral clustering may 
 
 % How is the clustering problem defined?
 Clustering is currently the most popular way of conducting unsupervised learning. 
-Given a dataset $\mathcal D$, the objective of clustering is to find a partition of $\mathcal D$, $(\mathcal P_1, \mathcal P_2, \cdots, \mathcal P_k)$, where $k \in \mathbb Z_{>0}$ is predetermined by the user of the algorithm, such that the similarity of elements of a same subset $\mathcal P_i$  $(\text{with } i \in \Iintv{1,k})$ are as big as possible and the similarity of elements of different subsets $\mathcal P_i$ and $\mathcal P_j$ $(\text{where } (i,j) \in \Iintv{1,k}^2, i \ne j)$ are as small as possible. 
+Given a dataset $\mathcal D$, the objective of clustering is to find a proper partition of $\mathcal D$, $(\mathcal P_1, \mathcal P_2, \cdots, \mathcal P_k)$, where $k \in \mathbb Z_{>1}$ is predetermined by the user of the algorithm, such that the similarity of elements of a same subset $\mathcal P_i$  $(\text{with } i \in \Iintv{1,k})$ are as big as possible and the similarity of elements of different subsets $\mathcal P_i$ and $\mathcal P_j$ $(\text{where } (i,j) \in \Iintv{1,k}^2, i \ne j)$ are as small as possible. 
 In other words, a clustering algorithm assigns a label $l \in \Iintv{1,k}$ to each data instance in $\mathcal D$ in such a way that data instances which are similar to each other are assigned the same label.
 The way the similarity of elements of a same subset and the similarity of elements of different subsets are calculated depends on the clustering algorithm used. 
 We can say the same about the way in which the dataset $\mathcal D$ is represented.
 
 % What are some non-spectral ways of doing clustering?
 Clustering may be achieved by several different approaches, each with its own advantages and disadvantages.
-Some models and approaches for clustering are as follows:
+Some models and approaches for clustering are:
 \begin{itemize}
    \item Strict partioning clustering: each data instance is classified into one cluster based on its similarity with other instances.
       The main approach for this type of clustering is k-means: the algorithm works by iteratively assigning a label to each data instance based on its similarity with each cluster.
@@ -211,17 +211,17 @@ We show the Spectral Clustering Algorithm below and explain why it outputs a val
 \caption{Spectral Clustering}\label{spectral_clustering}
 \begin{algorithmic}[1]
    \Require 
-      \Statex Adjacency Matrix: $A \in \mathbb R ^ {m \times m}$ 
-      \Statex Number of Clusters: $k \in \mathbb Z_{>0}$
+      \Statex Adjacency Matrix of the graph $G = (V,E)$: $A \in \mathbb R ^ {m \times m}$ 
+      \Statex Number of Clusters: $k \in \mathbb Z_{>1}$
    \Ensure 
       \Statex Partition of the set of vertices $V$: $\{ C_1, C_2, \cdots, C_k \} \subseteq V$
    \State Compute the normalized Laplacian $L$ of $A$.
-   \State Compute the first $k$ eigenvectors $(x_1, x_2, \cdots, x_k) \in (\mathbb R^{m \times 1})^k$ of $L$.
+   \State Compute the first $k$ eigenvectors $(x_1, x_2, \cdots, x_k) \in (\mathbb R^{m})^k$ of $L$.
    \State Let $X \in \mathbb R^{m \times k}$ be the matrix containing the vectors $x_1, x_2, \cdots, x_k$ as columns.
    \State Form the matrix $Y \in \mathbb R^{m \times k}$ by normalizing the columns of $X$.
    \State Let $(y_1, y_2, \cdots, y_m) \in ( \mathbb R^{1 \times k} )^m$ represent the row-vectors of $Y$.
    \State Cluster $(y_1, y_2, \cdots, y_m)$ using $k$-means into clusters $\{ D_1, D_2, \cdots, D_k \} $.
-   \State For each $i \in \Iintv{1,k}$, set $C_i = \{ v_j: y_j \in D_i \}$.
+   \State For each $i \in \Iintv{1,k}$, set $C_i = \{ v_j \in V: y_j \in D_i \}$.
 \end{algorithmic}
 \end{algorithm}
 
@@ -229,8 +229,8 @@ We show the Spectral Clustering Algorithm below and explain why it outputs a val
 
 
 \section{Preliminary definitions} 
-Before entering in the discussion of each derivation, we will give some definitions common to both approaches.
-Here we will assume that each data instance $d \in \mathcal D$ is a $n$ dimensional column vector, i.e. $\mathcal D \subseteq \mathbb R^{n \times 1}$.
+Before entering the discussion of each derivation, we will give some definitions common to both approaches.
+Here we will assume that each data instance $d \in \mathcal D$ is a $n$ dimensional column vector, i.e. $\mathcal D \subseteq \mathbb R^{n }$.
 
 \begin{definition}
    Let $\mathcal D$ be a dataset containing $m$ elements. The \textit{similarity matrix} $A \in \mathbb{R}^{m \times m}$ associated with $\mathcal D$ is defined as follows: 
@@ -287,7 +287,7 @@ Before entering the derivation, we need to outline a result.
    \label{bigeigenvalue}
    Let $G$ be a connected graph of order $m$.
    The normalized Laplacian associated with $G$ has the eigenvalue $1$ with positive eigenvector.
-   Furthermore, all the other eigenvalues are strictly smaller than $1$.
+   Furthermore, all the other eigenvalues are smaller than $1$.
 \end{proposition}
 This is a basic result in spectral graph theory.
 A proof may be found in, e.g., \cite{mahoney}.
@@ -301,7 +301,7 @@ Consider the dataset $\mathcal D$ corresponding to the graph $G$ and let $d_i \i
       0_{m_3 \times m_1} & 0_{m_3 \times m_2} & A^{(3)}
    \end{bmatrix}.
 \end{equation}
-Here, all the elements of the three matrices $A^{(1)} \in \mathbb R^{m_1 \times m_1}$, $A^{(2)} \in \mathbb R^{m_2 \times m_2}$ and $A^{(3)} \in \mathbb R ^{m_3 \times m_3}$ are strictly positive (that is, all their elements are strictly positive) and we have that $m_1+m_2+m_3 = m$. 
+Here, all the elements of the three matrices $A^{(1)} \in \mathbb R^{m_1 \times m_1}$, $A^{(2)} \in \mathbb R^{m_2 \times m_2}$ and $A^{(3)} \in \mathbb R ^{m_3 \times m_3}$ are positive (that is, all their elements are positive) and we have that $m_1+m_2+m_3 = m$. 
 From now on in this section, to avoid verbosity, we will omit the subscripts of the $0$ matrices.
 
 It follows from the definitions that the normalized Laplacian $L$ and the diagonal matrix $D$ can be expressed as block matrices in a similar way:
@@ -320,7 +320,7 @@ It follows from the definitions that the normalized Laplacian $L$ and the diagon
       0 & 0 & L^{(3)}
    \end{bmatrix},
 \end{equation}
-where $D^{(1)} \in \mathbb R ^{m_1 \times m_1}$, $D^{(2)} \in \mathbb R ^{m_2 \times m_2}$ and $D^{(3)} \in \mathbb R ^{m_3 \times m_3}$ are themselves diagonal matrices and $L^{(1)} \in \mathbb R ^{m_1 \times m_1}$, $L^{(2)} \in \mathbb R ^{m_2 \times m_2}$ and $L^{(3)} \in \mathbb R ^{m_3 \times m_3}$ are strictly positive normalized Laplacians of each element of the partition $(\mathcal P_1, \mathcal P_2, \mathcal P_3)$.
+where $D^{(1)} \in \mathbb R ^{m_1 \times m_1}$, $D^{(2)} \in \mathbb R ^{m_2 \times m_2}$ and $D^{(3)} \in \mathbb R ^{m_3 \times m_3}$ are themselves diagonal matrices and $L^{(1)} \in \mathbb R ^{m_1 \times m_1}$, $L^{(2)} \in \mathbb R ^{m_2 \times m_2}$ and $L^{(3)} \in \mathbb R ^{m_3 \times m_3}$ are positive normalized Laplacians of each element of the partition $(\mathcal P_1, \mathcal P_2, \mathcal P_3)$.
 Here, the following relation holds for each $i \in \{1, 2, 3 \}$:
 \begin{equation}
    L^{(i)} = \left( D^{(i)} \right) ^{-1/2} A^{(i)} \left( D^{(i)} \right) ^{-1/2}.
@@ -330,7 +330,7 @@ Since the matrix $L$ is block-diagonal, its set of eigenvalues $\sigma _L$ is gi
 Furthermore its eigenvectors are the same as the ones of $L_1$, $L_2$ and $L_3$, provided that they are ``extended'' with $0$ elements as necessary. 
 The proof of this claim may also be found in \cite{mahoney}.
 
-By Proposition~\vref{bigeigenvalue}, we know that each $L^{(i)}$ ($i \in \{1, 2, 3 \}$) has $1$ as an eigenvalue with positive eigenvector, which we denote by $x_1^{(i)} \in {\mathbb R_{>0}}^{m_i \times 1} $. Furthermore, all other eigenvalues of each $L^{(i)}$ are smaller than $1$.
+By Proposition~\vref{bigeigenvalue}, we know that each $L^{(i)}$ ($i \in \{1, 2, 3 \}$) has $1$ as an eigenvalue with positive eigenvector, which we denote by $x_1^{(i)} \in {\mathbb R_{>0}}^{m_i} $. Furthermore, all other eigenvalues of each $L^{(i)}$ are smaller than $1$.
 This implies that $L$ has $1$ as an eigenvalue with multiplicity $3$.
 Let $X$ be the matrix containing the eigenvectors associated with these eigenvalues as columns. We have that 
 \begin{equation}
@@ -359,7 +359,7 @@ By normalizing the rows of the matrix $X$, we construct the matrix $Y \in \mathb
    \end{bmatrix}R.
 \end{equation}
 
-If we let ${R_1}^T \in \mathbb{R}^{1 \times 3}$, ${R_2}^T \in \mathbb{R}^{1 \times 3}$ and ${R_3}^T \in \mathbb{R}^{1 \times 3}$ represent the rows of the matrix $R$, equation~\vref{y} tells us that the $i$-th row of $Y$ is given by ${R_j} ^T$, where $i \in \Iintv{1,m}$, $j \in \{1, 2, 3 \}$ and $d_i \in \mathcal P_j$ (i.e. the label of the $i$-th data instance is $j$).
+If we let ${R_1}^T \in \mathbb{R}^{1 \times 3}$, ${R_2}^T \in \mathbb{R}^{1 \times 3}$ and ${R_3}^T \in \mathbb{R}^{1 \times 3}$ represent the rows of the matrix $R$, Equation~\vref{y} tells us that the $i$-th row of $Y$ is given by ${R_j} ^T$, where $i \in \Iintv{1,m}$, $j \in \{1, 2, 3 \}$ and $d_i \in \mathcal P_j$ (i.e. the label of the $i$-th data instance is $j$).
 
 As a result, the rows of the matrix $Y$ related to the same label $i$ will cluster in the same point ${R_i}^T$.
 Furthermore, from the fact that $R$ is an orthogonal matrix, we deduce that rows of $Y$ corresponding to different labels will cluster in points (located in the unit sphere) that are perpendicular to each other. 
@@ -390,13 +390,13 @@ Before doing that, however, we need to give some definitions and outline some pr
 
 The cut of a set of vertices $C$ is a measure of how much the elements of $C$ are connected with the vertices of $\overline C$.
 For that reason, it is minimized when $C$ is a separated component. 
-One may try, then, to conduct clustering by minimizing the cut of the several elements of a partition of $V$.
+One may try, then, to conduct clustering by minimizing the cut of the several elements of a proper partition of $V$.
 However, a problem with this idea is that an eventual algorithm trying to achieve this objective might minimize the cut by separating individual vertices from the rest of the graph, which is not what we desire.
 A possible approach to deal with this complication is to normalize the cut in such a way that small clusters are ``penalized''.
 This leads to the next definition.
 
 \begin{definition}
-   Let $G = (V,E)$ be a graph of order $m$ with adjacency matrix $A \in \mathbb R^{m \times m}$, and let $(C_1, C_2, \cdots, C_k)$, where $k \in \Iintv{1,m}$, be a partition of the set of vertices $V$.
+   Let $G = (V,E)$ be a graph of order $m$ with adjacency matrix $A \in \mathbb R^{m \times m}$, and let $(C_1, C_2, \cdots, C_k)$, where $k \in \Iintv{2,m}$, be a proper partition of the set of vertices $V$.
    The \textit{normalized cut} of the partition $(C_1, C_2, \cdots, C_k)$ is defined as the following quantity:
    \begin{equation}
       \ncut (C_1, C_2, \cdots, C_k) = \sum _{i = 1}^k \frac{\cut (C_i)}{\vol(C_i)}.
@@ -404,13 +404,13 @@ This leads to the next definition.
    Here, $\vol (C_i)$ denotes the sum of the degrees of all the vertices $v \in C_i$ for each $i \in \Iintv{1,k}$.
 \end{definition}
 
-With this definition, we can think of the objective of spectral clustering as follows: given a graph $G=(V,E)$, and the number of clusters $k$, we wish to find a partition $(C_1, C_2, \cdots, C_k)$ of $V$ such that $\ncut (C_1, C_2, \cdots, C_k)$ is minimized. Unfortunately, this discrete optimization problem cannot be solved efficiently by brute force (more on this later). Therefore we will show how to derive a way of minimizing this quantity for $k = 2$ by relaxation. For the general case, the reader may consult \cite{tutorial}.
+With this definition, we can think of the objective of spectral clustering as follows: given a graph $G=(V,E)$, and the number of clusters $k$, we wish to find a proper partition $(C_1, C_2, \cdots, C_k)$ of $V$ such that $\ncut (C_1, C_2, \cdots, C_k)$ is minimized. Unfortunately, this discrete optimization problem cannot be solved efficiently by brute force (more on this later). Therefore we will show how to derive a way of minimizing this quantity for $k = 2$ by relaxation. For the general case, the reader may consult \cite{tutorial}.
 
 In the following proposition, we will show a useful form for expressions of the type $x^TLx$, where $L$ is a Laplacian matrix and $x$ is a real vector.
 As we will see later, this will come handy when we want to find relationships between Laplacian matrices and the normalized cut of certain partitions.
 
 \begin{proposition}\label{xtlx}
-   Let $G = (V,E)$ be a graph of order $m$ with adjacency matrix $A \in \mathbb R^{m \times m}$, and let $L_0$ be the unnormalized Laplacian matrix associated with $G$. Let $x \in \mathbb R^{m \times 1}$ be a real vector. Furthermore, for each $i \in \Iintv{1,m}$, let $d_i$ denote the degree of the vertex $v_i$. Then we have
+   Let $G = (V,E)$ be a graph of order $m$ with adjacency matrix $A \in \mathbb R^{m \times m}$, and let $L_0$ be the unnormalized Laplacian matrix associated with $G$. Let $x \in \mathbb R^{m }$ be a real vector. Furthermore, for each $i \in \Iintv{1,m}$, let $d_i$ denote the degree of the vertex $v_i$. Then we have
    \begin{equation}
       x^TL_0x = \frac{1}{2}\sum_{i,j = 1}^m A_{ij} \left( x_i - x_j \right)^2.
    \end{equation}
@@ -428,7 +428,7 @@ As we will see later, this will come handy when we want to find relationships be
    \end{equation*}
 \end{proof}
    The proposition above allows us to say the following:
-\begin{corollary}
+\begin{corollary}\label{unnormalizedLaplacianProperties}
    The unnormalized Laplacian $L_0$ of a graph $G$ has the following properties:
    \begin{enumerate}
       \item It is positive semidefinite.
@@ -440,7 +440,7 @@ As we will see later, this will come handy when we want to find relationships be
 And here we prove the generalization of the result above.
 
 \begin{proposition}\label{xtlx2}
-   Let $G = (V,E)$ be a graph of order $m$ with no isolated vertices and with similarity matrix $A \in \mathbb R^{m \times m}$, let $L$ be the normalized Laplacian matrix associated with $G$, and let $x \in \mathbb R^{m \times 1}$ be a real vector. Furthermore, for each $i \in \Iintv{1,m}$, let $d_i$ denote the degree of the vertex $v_i$. Then we have
+   Let $G = (V,E)$ be a graph of order $m$ with no isolated vertices and with similarity matrix $A \in \mathbb R^{m \times m}$, let $L$ be the normalized Laplacian matrix associated with $G$, and let $x \in \mathbb R^{m} $ be a real vector. Furthermore, for each $i \in \Iintv{1,m}$, let $d_i$ denote the degree of the vertex $v_i$. Then we have
    \begin{equation}
       x^TLx = \frac{1}{2}\sum_{i,j = 1}^m A_{ij} \left( \frac{x_i}{\sqrt{d_i}} - \frac{x_j}{\sqrt{d_j}} \right)^2.
    \end{equation}
@@ -475,20 +475,20 @@ These theorems are collectively known as \textit{Courant-Fischer Min-Max Theorem
 
 \begin{theorem} \label{minmax1}
    Let $m$ denote a positive integer, let $M \in \mathbb{C}^{m \times m}$ be a Hermitian matrix and denote its eigenvalues by $\lambda_1 \ge \lambda_2 \ge \cdots \ge \lambda_m$. 
-   Assume $U$ and $V$ denote linear subspaces of $\mathbb C^{m \times 1}$.
-   Then for all $k \in \Iintv{1,m}$ the following holds:
+   Assume $U$ and $V$ denote linear subspaces of $\mathbb C^{m }$.
+   Then for all $i \in \Iintv{1,m}$ the following holds:
 \begin{equation}
-   \lambda_k = \min_{\dim (U) = k} \max_{\substack{x \in U \\ x \ne 0_{m \times 1}}} \frac{x^HMx}{x^Hx} = \max_{\dim (V) = m-k+1} \min_{\substack{x \in V \\ x \ne 0_{m \times 1}}} \frac{x^HMx}{x^Hx}.
+   \lambda_i = \min_{\dim (U) = i} \max_{\substack{x \in U \\ x \ne 0_{m \times 1}}} \frac{x^HMx}{x^Hx} = \max_{\dim (V) = m-i+1} \min_{\substack{x \in V \\ x \ne 0_{m \times 1}}} \frac{x^HMx}{x^Hx}.
 \end{equation}
 \end{theorem}
 
 \begin{theorem} \label{minmax2}
    Let $m$ denote a positive integer, let $M \in \mathbb {C} ^{m \times m}$ be a Hermitian matrix and $N \in \mathbb C ^{m \times m}$ be a Hermitian positive semidefinite matrix such that $\mathcal N (N)  \subseteq \mathcal N (M)$.
-   Assume $U$ and $V$ denote linear subspaces of $\mathbb C^{m \times 1}$.
-   Denote by $r$ the rank of matrix $T$ and by $\lambda_1 \ge \lambda_2 \ge \cdots \ge \lambda_r$ the generalized eigenvalues of the pencil $(M,N)$.
-   Then for all $k \in \Iintv{1,r}$ the following holds:
+   Assume $U$ and $V$ denote linear subspaces of $\mathbb C^{m }$.
+   Denote by $r$ the rank of matrix $M$ and by $\lambda_1 \ge \lambda_2 \ge \cdots \ge \lambda_r$ the generalized eigenvalues of the pencil $(M,N)$.
+   Then for all $i \in \Iintv{1,r}$ the following holds:
    \begin{equation}
-      \lambda_k = \min_{\substack{ \dim U = k \\ U \bot \mathcal N (N)}} \max_{x \in U} \frac{x^HMx}{x^HNx} = \max_{\substack{\dim  V = r - k + 1 \\ V \bot \mathcal N (N)}} \min_{x \in V} \frac{x^HMx}{x^HNx}.
+      \lambda_i = \min_{\substack{ \dim U = i \\ U \bot \mathcal N (N)}} \max_{x \in U} \frac{x^HMx}{x^HNx} = \max_{\substack{\dim  V = r - i + 1 \\ V \bot \mathcal N (N)}} \min_{x \in V} \frac{x^HMx}{x^HNx}.
    \end{equation}
 \end{theorem}
 A proof of these theorems can be found in \cite{minmax}.
@@ -496,7 +496,7 @@ A proof of these theorems can be found in \cite{minmax}.
 \subsection{Derivation}
 
 Let $m$ and $n$ be positive integers. 
-Consider the dataset $\mathcal D \subseteq \mathbb R ^{n \times 1}$ and its associated graph $G = (V,E)$ with similarity matrix $A \in \mathbb R^{m \times m}$.
+Consider the dataset $\mathcal D \subseteq \mathbb R ^{n }$ and its associated graph $G = (V,E)$ with similarity matrix $A \in \mathbb R^{m \times m}$.
 Let $C$ be a proper subset of $V$, and let $D \in \mathbb R ^{m \times m}$ be the diagonal matrix such that $D_{ii}$ is equal to the degree of $v_i \in V$ for all $i \in \Iintv{1,m}$.
 Our objective is to set $C$ such that 
 \begin{equation}
@@ -507,7 +507,7 @@ A proof that this optimization problem is NP-complete may be found at \cite{norm
 Therefore, we need another approach in order to perform clustering in a graph by minimizing the normalized cut.
 
 \begin{definition}
-The indicator vector $x_C \in \mathbb R ^{m \times 1}$ is defined by:
+The indicator vector $x_C \in \mathbb R ^{m }$ is defined by:
    \begin{equation} \label{indicator}
    (x_C)_i =
    \begin{cases}
@@ -562,10 +562,10 @@ Before that, consider the following lemmas:
 
 And here, finally, we relate ${x_C}^TL{x_C}$ and the normalized cut.
 
-\begin{theorem}
+\begin{theorem}\label{xtxcut}
    The following holds:
    \begin{equation}
-      {x_C}^TL_0{x_C} = \vol(V)\, \cut (A, \overline A).
+      {x_C}^TL_0{x_C} = \vol(V)\, \ncut (A, \overline A).
    \end{equation}
 \end{theorem}
 \begin{proof}
@@ -591,22 +591,22 @@ Considering that $\vol (V)$ is constant for a given graph, the objective functio
    \argmin_C \ncut\,(A, \overline A),
 \end{equation}
 can be expressed as
-\begin{equation}
-   \argmin_{x_C \in \mathbb R^{m \times 1}} \,{x_C}^T L_0 x_C \text{,}
+\begin{equation}\label{npequation}
+   \argmin_{x_C \in \mathbb R^{m }} \,{x_C}^T L_0 x_C \text{,}
 \end{equation}
-where $x_C$ is defined as in equation~\vref{indicator}.
+where $x_C$ is defined as in Equation~\vref{indicator}.
 
 As discussed before, this is a NP-complete problem.
-To deal with this issue, we may try to relax the condition that $x_C$ is a indicator vector and treat it as a normal vector in $\mathbb R^{m \times 1}$.
+To deal with this issue, we may try to relax the condition that $x_C$ is an indicator vector and treat it as a normal vector in $\mathbb R^{m }$.
 However, in order not to lose too much information from the optimization constraints, we should also incorporate the two conditions that $x_C$ obeys given by Lemma~\ref{cond1} and Lemma~\vref{cond2} in our new constraint. We get, then:
 
 \begin{equation}
-   \argmin_{x \in \mathbb R^{m \times 1}} {x}^TL_0{x}\,\text{ subject to } (Dx)\, \bot \, 1_{m \times 1}  \text{ and } x^T D x = \vol (V).
+   \argmin_{x \in \mathbb R^{m }} {x}^TL_0{x}\,\text{ subject to } (Dx)\, \bot \, 1_{m \times 1}  \text{ and } x^T D x = \vol (V).
 \end{equation}
 
 In order to put the constraining problem above in the form given by Courant-Fischer Min-Max Theorem, we can make the substitution $y = D^{1/2}x$ and obtain
 \begin{equation} \label{optm}
-   \argmin_{y \in \mathbb R^{m \times 1}} y^TLy \,\text{ subject to } y \, \bot \, (D^{1/2} \,1_{m \times 1}) \text{ and } y^T y = \vol (V).
+   \argmin_{y \in \mathbb R^{m }} y^TLy \,\text{ subject to } y \, \bot \, (D^{1/2} \,1_{m \times 1}) \text{ and } y^T y = \vol (V).
 \end{equation}
 
 Using Theorem~\vref{minmax1} for $k = 2$ we know that the second biggest eigenvalue of the matrix $L$ satisfies:
@@ -614,10 +614,10 @@ Using Theorem~\vref{minmax1} for $k = 2$ we know that the second biggest eigenva
    \lambda_2 = \left( 1/\vol(V) \right) \max_{\dim (V) = m-1} \min_{\substack{y \in V \\ y \bot D^{1/2}1_{m \times 1}}} \, y^TLy.
 \end{equation}
 
-Furthermore, knowing that $y$ is perpendicular to the eigenvector corresponding to the eigenvalue $\lambda_1 = 0$, the eigenvector corresponding to the second largest eigenvalue of $L$ is the solution to the optimization problem given by equation~\ref{optm2} and consequently the one given by equation~\ref{optm}.
+Furthermore, knowing that $y$ is perpendicular to the eigenvector corresponding to the eigenvalue $\lambda_1 = 0$, the eigenvector corresponding to the second largest eigenvalue of $L$ is the solution to the optimization problem given by Equation~\ref{optm2} and consequently the one given by Equation~\ref{optm}.
 
 Clearly, obtaining $y$ and consequently $x$ does not give us $C$ immediately.
-However, we can consider the coordinates of $x \in \mathbb R^{m \times 1}$ as points in $\mathbb R$, use $k$-means to cluster them and recover $C$.
+However, we can consider the coordinates of $x \in \mathbb R^{m }$ as points in $\mathbb R$, use $k$-means to cluster them and recover $C$.
 
 \chapter{Spectral Clustering with the Bethe Hessian}
 
@@ -625,7 +625,6 @@ However, we can consider the coordinates of $x \in \mathbb R^{m \times 1}$ as po
 \chapter{Constrained Spectral Clustering with FAST-GE2}
 
 
-\section{Introduction}
 
 % Introduction
 The Information Age has brought with it large incentives to organize and process big amounts of data.
@@ -638,10 +637,10 @@ In this chapter, we describe FAST-GE-2.0, a spectral way of performing constrain
 This chapter is mainly a survey of the results from \cite{fastge2}, although we have changed some of the presentation and notation as to make them fit better with the rest of this thesis.
 
 \section{Constrained Clustering}
-In this chapter, $m$, $n$, and $k$ represent positive integers.
+In this chapter, $m$, $n$, and $k$ represent positive integers, with $k > 1$.
 
 % What is Constrained Clustering? Why is it important? Where is it used?
-Given a dataset $\mathcal D \subseteq \mathbb{R}^{n \times 1}$ (or equivalently a weighted graph $G = (V,E)$ of order $m$) and a set of contraints, to perform constrained clustering on the data means to find a partition $(C_1, C_2, \cdots, C_k)$ of $V$ such that:
+Given a dataset $\mathcal D \subseteq \mathbb{R}^{n }$ (or equivalently a weighted graph $G = (V,E)$ of order $m$) and a set of contraints, to perform constrained clustering on the data means to find a proper partition $(C_1, C_2, \cdots, C_k)$ of $V$ such that:
 \begin{itemize}
    \item For all $i \in \Iintv{1,k}$, edges of vertices in the same subset $C_i$ have big weights.
    \item For all $(i,j) \in \Iintv{1,k}^2$, edges of vertices in different subsets $C_i$ and $C_j$ have small weights.
@@ -668,7 +667,7 @@ We will now discuss FAST-GE-2.0, a spectral algorithm proposed by Chengming Jian
 % What is the objective of a p-way contrained clustering (slide; no equation)
 We are given a fully connected graph $G = (V,E)$ of order $m$ with adjacency matrix $A$.
 Assume a set of constraints $\{V_1, V_2, \cdots, V_k \}$ is given.
-The objective of FAST-GE-2.0, in line with our discussion in the last section, is to find a partition $(C_1, C_2, \cdots, C_k)$ of $V$ such that $V_i \subseteq C_i$ for all $i \in \Iintv{1,k}$, where, for each pair $(i,j) \in \Iintv{1,m}^2$, vertices $(u,v) \in {C_i}^2$ have edges with high weight and vertices $(u,v) \in {C_i} \times {C_j}$, with $i \ne j$ have edges with low weight.
+The objective of FAST-GE-2.0, in line with our discussion in the last section, is to find a proper partition $(C_1, C_2, \cdots, C_k)$ of $V$ such that $V_i \subseteq C_i$ for all $i \in \Iintv{1,k}$, where, for each pair $(i,j) \in \Iintv{1,m}^2$, vertices $(u,v) \in {C_i}^2$ have edges with high weight and vertices $(u,v) \in {C_i} \times {C_j}$, with $i \ne j$ have edges with low weight.
 FAST-GE-2.0 manages to satisfy these constraints indirectly by using auxiliary graphs and encoding the ML and CL constraints into the Laplacian matrices dealth with in the algorithm.
 
 \subsection{Auxiliary graphs}
@@ -678,7 +677,7 @@ In this subsection we define the auxiliary graphs used in FAST-GE-2.0.
 \subsubsection*{The graph $G_M$}
 \begin{definition}
    The graph $G_M = (V,E)$ is defined by its adjacency matrix 
-\begin{equation}
+   \begin{equation}\label{am}
    A_M = \sum_{\ell = 1}^k A_{M_{\ell}},
 \end{equation}
    where, for each $(\ell, i, j) \in \Iintv{1,k} \times \Iintv{1, m}^2$, the entries of the submatrix $A_{M_{\ell}} \in \mathbb R^{m \times m}$ are given by:
@@ -689,47 +688,309 @@ In this subsection we define the auxiliary graphs used in FAST-GE-2.0.
          0 & \text{ otherwise.}
       \end{cases}
    \end{equation}
-   Here, for each $i \in \Iintv{1,k}$, $d_i$ represents the degree of the vertex $v_i$. 
-   Futhermore, $d_{\min}$ and $d_{\max}$ represent the smallest and biggest element of the set $\{ d_i \}_{i=1}^k$, respectively.
+   Here, for each $i \in \Iintv{1,m}$, $d_i$ represents the degree of the vertex $v_i$. 
+   Futhermore, $d_{\min}$ and $d_{\max}$ represent the smallest and biggest element of the set $\{ d_i \}_{i=1}^m$, respectively.
 \end{definition}
 
 As shown in Figure~\vref{gm}, if we define $G_M$ as above, for any given $\ell \in \Iintv{1,k}$, the quantity
 \begin{equation}
    \cut_{G_M\,}(C_{\ell}) = \sum_{\substack{v_i \in C_{\ell} \\ v_j \overline{C_{\ell}}}} (A_M)_{ij} 
 \end{equation}
-measures the amount of violations of ML constraints relative to the cut of $C_{\ell}$.
+%measures the amount of violations of ML constraints relative to the cut of $C_{\ell}$.
+measures the degree to which the proper partition $(C_1, C_2, \cdots, C_k)$ violates the ML constraints.
 Therefore we must try to minimize it as much as possible.
 
 \begin{figure}
 \begin{center}
 \includegraphics[width=8cm]{figures/gm.png}
 \end{center}
-   \caption[Graphical representation of $\cut_{G_M\,}(C_1)$ for a simple graph $G=(V,E)$]{Graphical representation of $\cut _{G_M\,}(C_1)$ for a simple simple graph $G = (V,E)$.  In this example, red vertices are elements of $V_1$, blue vertices are elements of $V_2$ and black vertices are elements of $V \setminus (V_1 \cup V_2)$. The black lines represent elements of $A_M$ that contribute to the amount of violations of ML given by $\cut _{G_M\,}(C_1)$. Notice that all non-zero elements of $A_M$ must connect vertices of the same color, and all terms contributing to $\cut _{G_M\,}(C_1)$ must connect vertices in different clusters; hence the lines in the figure. We want elements of the same color to stay in the same cluster as much as possible. Therefore, we must try to decrease the amount of black lines.}
+   \caption[Graphical representation of $\cut_{G_M\,}(C_1)$ for a simple graph $G=(V,E)$]{Graphical representation of $\cut _{G_M\,}(C_1)$ for a simple simple graph $G = (V,E)$.  In this example, red vertices are elements of $V_1$, blue vertices are elements of $V_2$ and black vertices are elements of $V \setminus (V_1 \cup V_2)$. The black lines represent elements of $A_M$ that contribute to the amount of violations of ML given by $\cut _{G_M\,}(C_1)$. Note that all non-zero elements of $A_M$ must connect vertices of the same color, and all terms contributing to $\cut _{G_M\,}(C_1)$ must connect vertices in different clusters; hence the lines in the figure. We want elements of the same color to stay in the same cluster as much as possible. Therefore, we must try to decrease the amount of black lines.}
 \label{gm}
 \end{figure}
 
 % Graph G_H (include figure)
 \subsubsection*{The graph $G_H$}
+\begin{definition}
+The graph $G_H = (V,E)$ is defined by its adjacency matrix
+   \begin{equation}\label{ah}
+      A_H = \frac{1}{m} \, (A_C + {A_C}^T + A_K).
+   \end{equation}
+   Here, $A_C \in \mathbb{R}^{m \times m}$ is a matrix whose values are given by
+   \begin{equation}
+      (A_C)_{ij} = 
+      \begin{cases}
+      (d_i d_j)/(d_{\min} d_{\max}) & \text{ if $(v_i, v_j) \in V_{\ell_1} \times V_{\ell_2}$ and $\ell_1 \ne \ell_2$} \\
+         0 & \text{ otherwise,}
+      \end{cases}
+   \end{equation}
+   for each $(\ell_1, \ell_2, i, j) \in \Iintv{1,k}^2 \times \Iintv{1,m}^2$. 
+   For all $i \in \Iintv{1,m}$, $d_i$ represents the degree of the vertex $v_i$. $d_{\min}$ and $d_{\max}$ represent the smallest and biggest element of the set $\{ d_i \}_{i=1}^m$, respectively.
+   Furthermore, $A_K \in \mathbb{R}^{m \times m}$ is a matrix whose entries are given by 
+   \begin{equation}
+      (A_K)_{ij} = \frac{  \left( d^{(K)} \right) _i \cdot \left( d^{(K)} \right) _j }{ \sum_{p = 1}^m (d^{(K)})_p },
+   \end{equation}
+   for each $(i,j) \in \Iintv{1,m}^2$. Here, for every $i \in \Iintv{1,m}$, $\left( d^{(K)} \right) _i$ represents the sum of the elements in the $i$-th column of the matrix $A_C + {A_C}^T$.
+\end{definition}
+As shown in Figure \vref{gh}, if we define $G_H$ as above, for any given $\ell \in \Iintv{1,k}$, the quantity
+\begin{equation}
+   \cut _{G_H \,} (C_{\ell}) = \sum_{\substack{v_i \in C_{\ell} \\ v_j \in \overline{C_{\ell}}}} (A_H)_{ij} .
+\end{equation}
+measures the degree to which the proper partition $(C_1, C_2, \cdots, C_k)$ satisfies the CL constraints (as long as we do not consider $A_K$). 
+Therefore we must try to maximize it as much as possible.
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=8cm]{figures/gh.png}
+\end{center}
+   \caption[Graphical representation of $\cut_{G_H\,}(C_1)$ for a simple graph $G=(V,E)$]{Graphical representation of $\cut _{G_H\,}(C_1)$ for a simple simple graph $G = (V,E)$.  In this example, red vertices are elements of $V_1$, blue vertices are elements of $V_2$ and black vertices are elements of $V \setminus (V_1 \cup V_2)$. The black lines represent elements of $A_C$ that contribute to the amount obedience of CL given by $\cut _{G_H\,}(C_1)$. Note that all non-zero elements of $A_C$ must connect vertices of different colors, and all terms contributing to $\cut _{G_H\,}(C_1)$ must connect vertices in different clusters; hence the lines in the figure. We want elements of different colors to stay in the different clusters as much as possible. Therefore, we must try to increase the amount of black lines.}
+\label{gh}
+\end{figure}
+
+The matrix $A_K$ is called a \textit{demand matrix}, and it is used in the construction of the graph $G_H$ in order to obtain some guarantees related to the spectral relaxation of FAST-GE-2.0. 
+The mathematical details behind its use are beyond the level of this thesis.
+More details about it can be found in \cite{fastge1}.
+
+
+\subsection{Objective function}
+In this and the following subsections, we assume $\ell \in \Iintv{1,k}$.
 
 % Measure of badness
+From our discussions on the last section, we know that we want to both minimize $\cut _{G_M\,}(C_{\ell})$ and to maximize $\cut _{G_H\,}(C_{\ell})$.
+A natural next step, then, is to create some form of measure involving both cuts that we can optimize.
+\begin{definition}
+  We define the measure of badness $\phi_\ell$ relative to a cluster $C_\ell$ as follows:
+   \begin{equation}
+      \phi_\ell = \frac{\cut_{G_M\,} (C_\ell) + \cut_{G\,}(C_\ell)}{\cut_{G_H\,}(C_\ell)},
+   \end{equation}
+   where $G$ is the original graph we are trying to cluster with adjacency matrix $A$.
+\end{definition}
+Note that from our discussion in the past section, the only way to minimize $\phi_\ell$ is to either
+\begin{enumerate}[(a)]
+   \item minimize $\cut_{G_M\,}(C_\ell)$, which is the same as minimizing the amount of violations of ML constraints; or to
+   \item minimize $\cut_{G\,}(C_\ell)$, which is the same as selecting a better cluster $C_\ell$ from the point of view of pure clustering; or to
+   \item maximize $\cut_{G_L\,}(C_\ell)$, which is the same as maximizing the amount of obedience to CL constraints.
+\end{enumerate}
+Therefore, for any given cluster $C_\ell$, the measure $\phi_\ell$ successfully encapsulates all of our objectives in constrained clustering.
+
+\begin{remark}
+   The value $\cut_{G_M\,}(C_\ell) + \cut_{G\,}(C_\ell)$ may be expressed equivalently by $\cut_{G_N\,}(C_\ell)$, where $G_N$ is a \textit{new} graph defined by its adjacency matrix:
+   \begin{equation}
+      A_N = A_M+A.
+   \end{equation}
+   We can then write the measure of badness $\phi_\ell$ as
+   \begin{equation}
+      \phi_\ell = \frac{\cut_{G_N\,}(C_\ell)}{\cut_{G_H\,}(C_\ell)}.
+   \end{equation}
+\end{remark}
 
 % Get the equation for k-way constrained partioning
+We can then set our final objective function as the follows:
+\begin{definition}
+The objective of FAST-GE-2.0 for a $k$-way constrained partitioning is given by
+   \begin{equation}\label{objective}
+      \min_{(C_1, C_2, \cdots, C_k)} \max_{\ell} \phi _\ell.
+   \end{equation}
+   In other words, we want to find a proper partition $(C_1, C_2, \cdots, C_k)$ of $V$ that minimizes the biggest value of $\phi_\ell$ for all clusters $C_\ell$.
+\end{definition}
+
+\subsection{Eigenproblem formulation}
+In this subsection, we will analyze the case where $k = 2$ as it was done in \cite{fastge2}.
+An analysis of the general case, which may be found in \cite{fastge1}, requires linear algebra knowledge not expected from the main audience of this thesis, so we omit it.
 
 % Refer to theorem to say the equation above is the same as Rayleigh quotient
+In the case $k=2$, if we set $C_1 = C$ and $C_2 = \overline C$, the objective function given in Equation \vref{objective} can be rewritten as 
+\begin{equation}\label{phi2}
+   \min_C \frac{\cut_{G_N\,}(C)}{\cut_{G_H\,}(C)}.
+\end{equation}
+
+Here, Theorem \vref{xtxcut} allows us to rewrite Equation \vref{phi2} in more convenient terms. 
+An important point to note, however, is that since the $\vol (V)$ is constant, we can ignore it in the optimization analysis.
+The objective function becomes then:
+\begin{equation}
+   \min_{{x_C}^TL_H {x_C} \ne 0} \frac{{x_C}^TL_N{x_C}}{{x_C}^TL_H{x_C}},
+\end{equation}
+where $L_N$ and $L_H$ are respectively the unnormalized Laplacians of the graphs $G_N$ and $G_H$, and where $x_C$ is an indicator vector as defined in Equation~\vref{indicator}.
 
 % Problem is NP-complete (reference to somewhere that proves it --> check paper)
-
+With a similar argument as the one used for Equation~\vref{npequation}, one can prove that the optimization problem above is NP-complete \cite{fastge2}.
 % Approximation
+It stands to reason then to perform spectral relaxation and try to apply the General Courant-Fischer Min-Max Theorem to the objective function as we did for regular spectral clustering. The function becomes:
+\begin{equation}\label{inf}
+   \inf_{\substack{x \in \mathbb R^m \\ x^T L_H x \ne 0}} \frac{x^T L_N x}{x^T L_H x},
+\end{equation}
+where $x \in \mathbb R^{m }$ is now a arbitrary real column-vector.
+Note that we have written $\inf$ instead of $\min$.
+The reason for this is that the minimum is not guaranteed to be achieved.
 
-% Det and intersection of nullspace of (L_G and L_H) (proof or reference --> check paper)
+Even after performing the spectral relaxation above, however, we still cannot be sure we are allowed to apply General Courant-Fischer, since it requires not only that the Laplacian $L_H$ in the denominator be positive semidefinite (which is true by Corollary \vref{unnormalizedLaplacianProperties}), but also that $\mathcal N (L_H) \subseteq \mathcal N (L_N)$. 
+Let us check whether this condition holds or not.
 
-% Why we cannot use minmax theorem we showed before?
 
-% New variational principle
+\begin{proposition} \label{spanOfLn}
+   If $G$ is a connected graph, then 
+   \begin{equation}
+      \mathcal N (L_N) = \spn \{ 1_{m \times 1} \}.
+   \end{equation}
+\end{proposition}
+\begin{proof}
+   We known from the definition that $A_N = A + A_M$.
+   Since $G$ is connected, all elements of $A$ are positive, and we can conclude that all elements of $A_N$ are also positive.
+   Now assume $x \in \mathbb R ^{m}$ is an element of the nullspace of $L_N$, i.e. $L_N x = 0$.
+   By Proposition \vref{xtlx}, we know that:
+   \begin{equation*}
+      x^T (L_N x) = \frac{1}{2} \sum_{i,j=1}^m (A_N)_{ij} (x_i - x_j)^2 = 0.
+   \end{equation*}
+   For all $(i,j) \in \Iintv{1,m}^2$, $(A_N)_{ij} > 0$, so we must have $x_i - x_j = 0$ for all these pairs.
+   That is, all elements of $x$ must necessarily be the same. \qed
+\end{proof}
+
+\begin{proposition} \label{spanOfLh}
+   Even if $G$ is connected, 
+   \begin{equation}
+      \mathcal N (L_H) \subseteq \mathcal N (L_N)
+   \end{equation}
+   does not necessarily hold.
+\end{proposition}
+\begin{proof}
+   We will demonstrate this proposition by showing a connected graph $G$ for which $L_H$ has an eigenvector $x$ such that $x \notin \mathcal \spn \{ 1_{m \times 1} \}$. 
+   Assume $G$ is the completely connected graph of order $m$ where $A_{ij} = 1$, for all $(i,j) \in \Iintv{1,m}^2$.
+   Assume further that $V_1 = \{ v_1 \}$ and $V_2 = \{ v_2 \}$.
+   We must have that $d_i = m(m-1)/2$, for all $i \in \Iintv{1,m}$, and thus, from the definitions given in this section:
+   \begin{equation*}
+      A_C = 
+      \begin{bmatrix}
+         0 & 1 & 0 & \cdots & 0 \\
+         1 & 0 & 0 & \cdots & 0 \\
+         0 & 0 & 0 & \cdots & 0 \\
+         \vdots & \vdots & \vdots & \ddots & 0 \\
+         0 & 0 & 0 & \cdots & 0 
+      \end{bmatrix}.
+   \end{equation*}
+   We must have then that $\left( d^{(K)} \right) _1 = \left( d^{(K)} \right)_2 = 2$ and $\left( d^{(K)} \right)_i = 0$ for all $i \in \Iintv{3,m}$. Thus
+   \begin{equation*}
+      A_K =
+      \begin{bmatrix}
+         1 & 1 & 0 & \cdots & 0 \\
+         1 & 1 & 0 & \cdots & 0 \\
+         0 & 0 & 0 & \cdots & 0 \\
+         \vdots & \vdots & \vdots & \ddots & 0 \\
+         0 & 0 & 0 & \cdots & 0 
+      \end{bmatrix},
+      \text{ and }
+      A_H = \frac{1}{m} \, (A_C + {A_C}^T + A_K) = 
+      \begin{bmatrix}
+         1/m & 3/m & 0 & \cdots & 0 \\
+         3/m & 1/m & 0 & \cdots & 0 \\
+         0 & 0 & 0 & \cdots & 0 \\
+         \vdots & \vdots & \vdots & \ddots & 0 \\
+         0 & 0 & 0 & \cdots & 0 
+      \end{bmatrix}.
+   \end{equation*}
+   Finally, computing the Laplacian $L_H = D_H - A_H$, where $D_H = \text{diag} \,(4/m, 4/m, 0 \cdots, 0) \in \mathbb R^{m \times m}$ is the diagonal matrix of the graph:
+   $G_H$:
+   \begin{equation*}
+      L_H =
+      \begin{bmatrix}
+         3/m & -3/m & 0 & \cdots & 0 \\
+         -3/m & 3/m & 0 & \cdots & 0 \\
+         0 & 0 & 0 & \cdots & 0 \\
+         \vdots & \vdots & \vdots & \ddots & 0 \\
+         0 & 0 & 0 & \cdots & 0 
+      \end{bmatrix},
+   \end{equation*}
+   which clearly has $x = {\begin{bmatrix} 0 & 0 & 1 & 1 & \cdots & 1 \end{bmatrix}}^T \in \mathbb R ^{m} \setminus \spn \{ 1_{m \times 1} \}$ as one of its eigenvectors. \qed
+\end{proof}
+
+Proposition \vref{spanOfLh} shows to us then that we cannot use the Generalized Courant-Fischer Theorem as a guarantee that the spectral relaxation will work.
+Fortunately, Chengming Jiang et al. proved the following theorem in \cite{fastge2}.
+
+\begin{theorem}
+   \label{fastge2theorem}
+   For the matrices $L_N$ and $L_H$ defined in this chapter, the following holds
+   \begin{enumerate}[(a)]
+      \item the pencil $(L_N, L_H)$ has $r$ finite non-negative generalized eigenvalues $0 \le \lambda_1 \le \lambda_2 \le \cdots \le \lambda_r$, where $r$ denotes the rank of the matrix $L_H$.
+      \item For every $i \in \Iintv{1,r}$, the following holds
+         \begin{equation}
+            \lambda_i = \max_{\substack{\mathcal X \subseteq \mathbb R^m \\ \dim {\mathcal X} = n-i+1 }} \min_{\substack{x \in \mathcal X \\ x^T L_H x > 0}} \frac{x^T L_N x}{x^T L_H x}.
+         \end{equation}
+         In particular, 
+         \begin{equation}
+            \lambda_1 = \min_{\substack{x \in \mathbb R^m \\ x^TL_Hx>0}} \frac{x^tL_N x}{x^T L_H x}.
+         \end{equation}
+   \end{enumerate}
+\end{theorem}
+
+Item (b) of Theorem \vref{fastge2theorem} guarantees to us that the $\inf$ in Equation \vref{inf} can be substituted by a $\min$:
+\begin{equation}\label{min}
+   \min_{\substack{x \in \mathbb R^m \\ x^T L_H x \ne 0}} \frac{x^T L_N x}{x^T L_H x},
+\end{equation}
+and that this minimum is given by the smallest finite eigenvalue of the following generalized eigenvalue problem:
+\begin{equation}\label{generalizedEigenproblem}
+   L_N x = \lambda L_H x.
+\end{equation}
+
+Our problem, then, is reduced to solving the generalized eigenproblem given by Equation \vref{generalizedEigenproblem}, a particular case of the well-studied Generalized Hermitian Eigenvalue problem.
+Several approaches exist to solve it: Direct methods, Lanczos methods and Locally Optimal Block Preconditioned Conjugate Gradient (LOBPCG) algorithm, for example. 
+However, all of them require that the pencil $(L_N, L_H)$ be non-singular (see \cite{templates}).
+In other words, we need the following condition to hold for all $\lambda \in \mathbb R$:
+\begin{equation}
+   \det (L_N - \lambda L_H) \ne 0,
+\end{equation}
+which is problematic due to the following proposition:
+\begin{proposition}
+   The pencil $(L_N, L_H)$ is singular.
+\end{proposition}
+\begin{proof}
+   Since $1_{m \times 1}$ is in the nullspace of both $L_N$ and $L_H$ (Corollary \vref{unnormalizedLaplacianProperties}), we know that, for any $\lambda \in \mathbb R$,
+   \begin{equation*}
+      (L_N - \lambda L_H) 1_{m \times 1} = L_N 1_{m \times 1} - \lambda L_H 1_{m \times 1} = 0 - \lambda 0 = 0 = 0 \, 1_{m \times 1}.
+   \end{equation*}
+   Therefore, the matrices $(L_N - \lambda L_H)$ have $0$ as an eigenvalue and are, therefore, singular. \qed
+\end{proof}
 
 % Regularization (theorem 2 from paper)
+To fix this problem, then, we need to regularize the pencil $(L_N, L_H)$.
+The following theorem, also proved in \cite{fastge2}, allows us to do that:
+\begin{theorem}
+   Suppose the pencil $(L_N, L_H)$ has the finite eigenvalues $\lambda_1 \le \lambda_2 \le \cdots \le \lambda_r$, where $r$ is the rank of the matrix $L_H$. Let
+   \begin{equation}\label{regularization}
+      K = - L_H,  \text{ and } M = L_N + \mu L_H + ZSZ^T,
+   \end{equation}
+   where $Z \in \mathbb R^{m \times s}$ is an orthonormal basis of the common nullspace of $L_N$ and $L_H$, $S \in \mathbb R ^{s \times s}$ is an arbitrary positive definite matrix, and $\mu \in \mathbb R$.
+   Then the following holds:
+   \begin{enumerate}[(a)]
+      \item the matrix $M$ is positive definite.
+      \item the generalized eigenvalues of the pencil $(K, M)$ are $\sigma _1 \le \sigma_2 \le \cdots \le \sigma_r < \sigma_{r+1} = \sigma_{r+2} = \cdots = \sigma_m = 0$, where, for each $i \in \Iintv{1,r}$, $\sigma_i = -1/(\lambda_i + \mu)$.
+   \end{enumerate}
+\end{theorem}
+
+The theorem above lets us compute the $k$ smallest eigenvalues $\{ \lambda_i \}_{i=1}^k$ of the generalized eigenproblem in Equation \vref{min} by computing the $k$ \textit{largest} eigenvalues of the following generalized eigenproblem:
+\begin{equation}
+K x = \sigma M x,
+\end{equation}
+which can effectively be solve by methods such as Lanczos and LOBPCG.
 
 % Algorithm
+Given the considerations above, we can write the spectral algorithm for constrained clustering FAST-GE-2.0 as follows:
+\begin{algorithm}
+\caption{FAST-GE-2.0}\label{fastge2alg}
+\begin{algorithmic}[1]
+   \Require 
+      \Statex Number of Clusters: $k \in \mathbb Z_{>1}$
+      \Statex Adjacency Matrix of the graph $G=(V,E)$: $A \in \mathbb R ^ {m \times m}$ 
+      \Statex Constraint Sets: $\{ V_1, V_2, \cdots, V_k \} \subseteq V$
+      \Statex Regularization Parameters: $\mu \in \mathbb R$, $Z \in \mathbb R ^{n \times s}$, $S \in \mathbb R ^{s \times s}$
+   \Ensure 
+      \Statex Partition of the set of vertices $V$: $\{ C_1, C_2, \cdots, C_k \} \subseteq V$
+   \State Compute the graphs $G_M$ and $G_H$ with respective adjacency matrices $A_M$ and $A_H$ as indicated in Equation \vref{am} and Equation \vref{ah}.
+   \State Compute the unnormalized Laplacians $L_N$ and $L_H$ of the graphs $G_N$ and $G_H$. Here the adjacency matrix of $G_N$ is given by $A + A_M$.
+   \State Compute $k$ eigenvectors corresponding to the $k$ largest finite generalized eigenvalues of the pencil $(K,M)$ in Equation \vref{regularization}. Let $X \in \mathbb R ^{m \times k}$ be the matrix containing these eigenvectors as columns.
+   \State Let $Y \in \mathbb R ^{m \times k}$ be the matrix $X$ with rows and columns normalized.
+   \State Let $(y_1, y_2, \cdots, y_k) \in (\mathbb R^{1 \times k})^m$ represent the row-vectors of $Y$.
+   \State Cluster $(y_1, y_2, \cdots, y_m)$ using $k$-means into the clusters $ \{ D_1, D_2, \cdots, D_k \}$.
+   \State For each $i \in \Iintv{1,k}$, set $C_i = \{ v_j \in V: y_j \in D_i \}$.
+\end{algorithmic}
+\end{algorithm}
 
 % (maybe) reference to future numerical experiment
 
@@ -738,6 +999,10 @@ Therefore we must try to minimize it as much as possible.
 
 
 \chapter{Numerical Experiments}
+\section{Clustering Evaluation}
+\subsection{Normalized Mutual Information}
+
+\section{Experiment 1: }
 
 
 \chapter*{Acknowledgements}
