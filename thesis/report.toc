@@ -9,7 +9,7 @@
 \contentsline {subsection}{\numberline {2.4.1}Background}{7}
 \contentsline {subsection}{\numberline {2.4.2}Derivation}{10}
 \contentsline {chapter}{\numberline {Chap. 3}Spectral Clustering with the Bethe Hessian}{13}
-\contentsline {chapter}{\numberline {Chap. 4}Constrained Spectral Clustering with FAST-GE2}{14}
+\contentsline {chapter}{\numberline {Chap. 4}Constrained Spectral Clustering with FAST-GE-2.0}{14}
 \contentsline {section}{\numberline {4.1}Constrained Clustering}{14}
 \contentsline {section}{\numberline {4.2}FAST-GE-2.0}{15}
 \contentsline {subsection}{\numberline {4.2.1}Auxiliary graphs}{15}
