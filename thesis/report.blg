@@ -4,45 +4,45 @@ The top-level auxiliary file: report.aux
 The style file: plain.bst
 Database file #1: report.bib
 Warning--empty journal in minmax
-You've used 8 entries,
+You've used 11 entries,
             2118 wiz_defined-function locations,
-            547 strings with 5232 characters,
-and the built_in function-call counts, 3085 in all, are:
-= -- 301
-> -- 148
-< -- 3
-+ -- 59
-- -- 49
-* -- 215
-:= -- 500
-add.period$ -- 25
-call.type$ -- 8
-change.case$ -- 47
+            567 strings with 5713 characters,
+and the built_in function-call counts, 4386 in all, are:
+= -- 443
+> -- 180
+< -- 6
++ -- 72
+- -- 59
+* -- 284
+:= -- 682
+add.period$ -- 35
+call.type$ -- 11
+change.case$ -- 61
 chr.to.int$ -- 0
-cite$ -- 9
-duplicate$ -- 123
-empty$ -- 236
-format.name$ -- 49
-if$ -- 653
+cite$ -- 12
+duplicate$ -- 189
+empty$ -- 350
+format.name$ -- 59
+if$ -- 958
 int.to.chr$ -- 0
-int.to.str$ -- 8
-missing$ -- 8
-newline$ -- 43
-num.names$ -- 18
-pop$ -- 52
+int.to.str$ -- 11
+missing$ -- 11
+newline$ -- 58
+num.names$ -- 24
+pop$ -- 72
 preamble$ -- 1
-purify$ -- 39
+purify$ -- 50
 quote$ -- 0
-skip$ -- 94
+skip$ -- 150
 stack$ -- 0
-substring$ -- 197
-swap$ -- 36
-text.length$ -- 3
+substring$ -- 308
+swap$ -- 68
+text.length$ -- 6
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 32
+type$ -- 44
 warning$ -- 1
-while$ -- 31
-width$ -- 9
-write$ -- 88
+while$ -- 46
+width$ -- 13
+write$ -- 122
 (There was 1 warning)

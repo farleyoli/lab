@@ -1,4 +1,4 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 
 \bibitem{minmax}
 Haim Avron, Esmond Ng, and Sivan Toledo.
@@ -29,12 +29,24 @@ M.~W. {Mahoney}.
 \newblock {Lecture Notes on Spectral Graph Methods}.
 \newblock {\em ArXiv e-prints}, August 2016.
 
+\bibitem{ramanujan}
+Laurent Massouli{\'e}.
+\newblock Community detection thresholds and the weak ramanujan property.
+\newblock In {\em Proceedings of the forty-sixth annual ACM symposium on Theory
+  of computing}, pages 694--703. ACM, 2014.
+
 \bibitem{ng}
 Andrew~Y. Ng, Michael~I. Jordan, and Yair Weiss.
 \newblock On spectral clustering: Analysis and an algorithm.
 \newblock In T.~G. Dietterich, S.~Becker, and Z.~Ghahramani, editors, {\em
   Advances in Neural Information Processing Systems 14}, pages 849--856. MIT
   Press, 2002.
+
+\bibitem{Bethe}
+Alaa Saade, Florent Krzakala, and Lenka Zdeborov{\'a}.
+\newblock Spectral clustering of graphs with the bethe hessian.
+\newblock In {\em Advances in Neural Information Processing Systems}, pages
+  406--414, 2014.
 
 \bibitem{normalized}
 Jianbo Shi and Jitendra Malik.
@@ -46,5 +58,10 @@ Jianbo Shi and Jitendra Malik.
 Ulrike Von~Luxburg.
 \newblock A tutorial on spectral clustering.
 \newblock {\em Statistics and computing}, 17(4):395--416, 2007.
+
+\bibitem{circle}
+Eugene~P Wigner.
+\newblock On the distribution of the roots of certain symmetric matrices.
+\newblock {\em Annals of Mathematics}, pages 325--327, 1958.
 
 \end{thebibliography}

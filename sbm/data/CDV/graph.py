@@ -50,16 +50,16 @@ plt.plot(x, y2, label='Constrained Clustering with Bethe Hessian', color = "oran
 #plt.fill_between(x, predict_mean_ci_low2, predict_mean_ci_upp2, color = 'orange', alpha = 0.4)
 
 plt.plot(x, y3, label=r'Modified FAST-GE-2.0: Both $L_N$ and $L_H$', color = "green")
-plt.plot(x, data3[:,2], color = "green")
-plt.fill_between(x, predict_mean_ci_low3, predict_mean_ci_upp3, color = 'green', alpha = 0.4) 
+#plt.plot(x, data3[:,2], color = "green")
+#plt.fill_between(x, predict_mean_ci_low3, predict_mean_ci_upp3, color = 'green', alpha = 0.4) 
 
 plt.plot(x, y4, label='Modified FAST-GE-2.0: Only $L_N$', color = "red")
-plt.plot(x, data4[:,2], color = "red")
-plt.fill_between(x, predict_mean_ci_low4, predict_mean_ci_upp4, color = 'red', alpha = 0.4) 
+#plt.plot(x, data4[:,2], color = "red")
+#plt.fill_between(x, predict_mean_ci_low4, predict_mean_ci_upp4, color = 'red', alpha = 0.4) 
 
-plt.plot(x, y5, label='Modified FAST-GE-2.0 ', color = "purple")
-plt.plot(x, data5[:,2], color = "purple")
-plt.fill_between(x, predict_mean_ci_low5, predict_mean_ci_upp5, color = 'purple', alpha = 0.4) 
+plt.plot(x, y5, label='Modified FAST-GE-2.0: Only $L_H$', color = "purple")
+#plt.plot(x, data5[:,2], color = "purple")
+#plt.fill_between(x, predict_mean_ci_low5, predict_mean_ci_upp5, color = 'purple', alpha = 0.4) 
 
 plt.legend(loc='best')
 plt.title('Comparison of different modifications of FAST-GE-2.0')
