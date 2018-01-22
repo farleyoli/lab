@@ -15,15 +15,17 @@ import matplotlib.pyplot as plt
 #W = functions.compute_W (X)
 #print(W)
 
+hmm = np.linspace(7,40,300)
+
 size = 1000
 no = 10 
 res = np.zeros((no,), dtype=float)
 result = np.zeros((size,), dtype=float)
-for cin in np.arange(7, 50, 1):
+for cin in range(len(hmm)):
     for n in range(no):
         k = 2 
         #m = 400
-        A, labels = functions.create_sbm(n = size, cin = cin, cout = 1, q = k)
+        A, labels = functions.create_sbm(n = size, cin = hmm[cin], cout = 1, q = k)
         #A, labels = W, labels_true
         #constraint = functions.create_constraint(labels, m)
         labels1 = functions.unnorm_spec_clustering(A, k)

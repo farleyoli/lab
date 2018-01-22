@@ -24,6 +24,13 @@ Chengming Jiang, Huiqing Xie, and Zhaojun Bai.
 \newblock In {\em Artificial Intelligence and Statistics}, pages 757--766,
   2017.
 
+\bibitem{bethe2}
+Florent Krzakala, Cristopher Moore, Elchanan Mossel, Joe Neeman, Allan Sly,
+  Lenka Zdeborov{\'a}, and Pan Zhang.
+\newblock Spectral redemption in clustering sparse networks.
+\newblock {\em Proceedings of the National Academy of Sciences},
+  110(52):20935--20940, 2013.
+
 \bibitem{mahoney}
 M.~W. {Mahoney}.
 \newblock {Lecture Notes on Spectral Graph Methods}.
@@ -42,7 +49,7 @@ Andrew~Y. Ng, Michael~I. Jordan, and Yair Weiss.
   Advances in Neural Information Processing Systems 14}, pages 849--856. MIT
   Press, 2002.
 
-\bibitem{Bethe}
+\bibitem{bethe}
 Alaa Saade, Florent Krzakala, and Lenka Zdeborov{\'a}.
 \newblock Spectral clustering of graphs with the bethe hessian.
 \newblock In {\em Advances in Neural Information Processing Systems}, pages
@@ -53,6 +60,12 @@ Jianbo Shi and Jitendra Malik.
 \newblock Normalized cuts and image segmentation.
 \newblock {\em IEEE Transactions on pattern analysis and machine intelligence},
   22(8):888--905, 2000.
+
+\bibitem{nmi}
+Alexander Strehl and Joydeep Ghosh.
+\newblock Cluster ensembles---a knowledge reuse framework for combining
+  multiple partitions.
+\newblock {\em Journal of machine learning research}, 3(Dec):583--617, 2002.
 
 \bibitem{tutorial}
 Ulrike Von~Luxburg.

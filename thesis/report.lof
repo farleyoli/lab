@@ -7,3 +7,10 @@
 \contentsline {figure}{\numberline {4.2}{\ignorespaces Graphical representation of $\cut _{G_H\tmspace +\thinmuskip {.1667em}}(C_1)$ for a simple graph $G=(V,E)$}}{20}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Experimental results for clustering using unnormalized spectral clustering and Bethe Hessian clustering.}}{32}
+\contentsline {figure}{\numberline {6.2}{\ignorespaces Experimental results for constrained clustering using FAST-GE-2.0 and CVQE}}{33}
+\contentsline {figure}{\numberline {6.3}{\ignorespaces Experimental results for constrained clustering using five different methods}}{34}
+\contentsline {figure}{\numberline {6.4}{\ignorespaces Experimental results for clustering and constrained clustering as a function of $c_\text {in} - c_\text {out}$ for the number of communities $k=2$}}{36}
+\contentsline {figure}{\numberline {6.5}{\ignorespaces Experimental results for clustering and constrained clustering as a function of $c_\text {in} - c_\text {out}$ for the number of communities $k=3$}}{37}
+\contentsline {figure}{\numberline {6.6}{\ignorespaces Experimental results for clustering and constrained clustering as a function of $c_\text {in} - c_\text {out}$ for the number of communities $k=5$}}{38}
+\addvspace {10\p@ }
