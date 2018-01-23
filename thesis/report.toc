@@ -1,34 +1,32 @@
 \select@language {english}
 \contentsline {chapter}{\numberline {Chap. 1}Introduction}{1}
-\contentsline {section}{\numberline {1.1}Notation}{1}
-\contentsline {chapter}{\numberline {Chap. 2}Spectral clustering}{2}
-\contentsline {section}{\numberline {2.1}The clustering problem}{2}
-\contentsline {section}{\numberline {2.2}Preliminary definitions}{4}
-\contentsline {section}{\numberline {2.3}Ideal case approach}{5}
-\contentsline {section}{\numberline {2.4}Relaxation approach}{7}
-\contentsline {subsection}{\numberline {2.4.1}Background}{7}
-\contentsline {subsection}{\numberline {2.4.2}Derivation}{10}
-\contentsline {chapter}{\numberline {Chap. 3}Spectral clustering with the Bethe Hessian}{13}
-\contentsline {section}{\numberline {3.1}Stochastic Block Model}{13}
-\contentsline {section}{\numberline {3.2}Bethe Hessian}{14}
-\contentsline {chapter}{\numberline {Chap. 4}Constrained spectral clustering with FAST-GE-2.0}{17}
-\contentsline {section}{\numberline {4.1}Constrained Clustering}{17}
-\contentsline {section}{\numberline {4.2}FAST-GE-2.0}{18}
-\contentsline {subsection}{\numberline {4.2.1}Auxiliary graphs}{18}
-\contentsline {subsection}{\numberline {4.2.2}Objective function}{20}
-\contentsline {subsection}{\numberline {4.2.3}Eigenproblem formulation}{21}
-\contentsline {chapter}{\numberline {Chap. 5}Proposed method}{26}
-\contentsline {section}{\numberline {5.1}Our idea}{26}
-\contentsline {section}{\numberline {5.2}Problem with the degrees}{27}
-\contentsline {section}{\numberline {5.3}Algorithm}{28}
-\contentsline {chapter}{\numberline {Chap. 6}Numerical experiments}{29}
-\contentsline {section}{\numberline {6.1}Clustering evaluation}{29}
-\contentsline {subsection}{\numberline {6.1.1}Normalized mutual information}{29}
-\contentsline {section}{\numberline {6.2}Computing environment}{30}
-\contentsline {section}{\numberline {6.3}Experiment 1}{31}
-\contentsline {section}{\numberline {6.4}Experiment 2}{31}
-\contentsline {section}{\numberline {6.5}Experiment 3}{33}
-\contentsline {section}{\numberline {6.6}Experiment 4}{35}
-\contentsline {chapter}{\numberline {Chap. 7}Summary and future work}{39}
-\contentsline {chapter}{\hbox to\@lnumwidth {\hfil }Acknowledgements}{40}
-\contentsline {chapter}{\hbox to\@lnumwidth {\hfil }References}{41}
+\contentsline {section}{\numberline {1.1}Notations}{1}
+\contentsline {chapter}{\numberline {Chap. 2}Spectral clustering}{3}
+\contentsline {section}{\numberline {2.1}The clustering problem}{3}
+\contentsline {section}{\numberline {2.2}Preliminary definitions}{5}
+\contentsline {section}{\numberline {2.3}Ideal case approach}{6}
+\contentsline {section}{\numberline {2.4}Relaxation approach}{8}
+\contentsline {subsection}{\numberline {2.4.1}Background}{8}
+\contentsline {subsection}{\numberline {2.4.2}Derivation}{11}
+\contentsline {chapter}{\numberline {Chap. 3}Spectral clustering with the Bethe Hessian}{14}
+\contentsline {section}{\numberline {3.1}Stochastic Block Model}{14}
+\contentsline {section}{\numberline {3.2}Bethe Hessian}{15}
+\contentsline {chapter}{\numberline {Chap. 4}Constrained spectral clustering with FAST-GE-2.0}{19}
+\contentsline {section}{\numberline {4.1}Constrained Clustering}{19}
+\contentsline {section}{\numberline {4.2}FAST-GE-2.0}{20}
+\contentsline {subsection}{\numberline {4.2.1}Auxiliary graphs}{20}
+\contentsline {subsection}{\numberline {4.2.2}Objective function}{22}
+\contentsline {subsection}{\numberline {4.2.3}Eigenproblem formulation}{23}
+\contentsline {chapter}{\numberline {Chap. 5}Proposed method}{28}
+\contentsline {section}{\numberline {5.1}Our idea}{28}
+\contentsline {section}{\numberline {5.2}Problem with the degrees}{29}
+\contentsline {section}{\numberline {5.3}Algorithm}{30}
+\contentsline {chapter}{\numberline {Chap. 6}Numerical experiments}{31}
+\contentsline {section}{\numberline {6.1}Clustering evaluation and computing environment}{31}
+\contentsline {section}{\numberline {6.2}Experiment 1}{32}
+\contentsline {section}{\numberline {6.3}Experiment 2}{34}
+\contentsline {section}{\numberline {6.4}Experiment 3}{35}
+\contentsline {section}{\numberline {6.5}Experiment 4}{37}
+\contentsline {chapter}{\numberline {Chap. 7}Summary and future work}{42}
+\contentsline {chapter}{\hbox to\@lnumwidth {\hfil }Acknowledgements}{43}
+\contentsline {chapter}{\hbox to\@lnumwidth {\hfil }References}{44}

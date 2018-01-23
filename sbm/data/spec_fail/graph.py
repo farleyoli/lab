@@ -5,7 +5,7 @@ from statsmodels.stats.outliers_influence import summary_table
 from scipy.io import loadmat
 
 # fetch results
-result = np.load('bethe_triumph.npz')
+result = np.load('spec_fail.npz')
 y1 = result['arr_0'][result['arr_0'] != 0].copy()
 y2 = result['arr_1'][result['arr_1'] != 0].copy()
 n = len(y1)
@@ -26,11 +26,11 @@ predict_mean_ci_low1, predict_mean_ci_upp1 = data1[:,4:6].T
 predict_mean_ci_low2, predict_mean_ci_upp2 = data2[:,4:6].T
 
 # plot graphs
-plt.plot(x[0:130], y1[0:130], label='Unnormalized Spectral Clustering', color = "blue")
+plt.plot(x, y1, label='Unnormalized Spectral Clustering', color = "blue")
 #plt.plot(x, data1[:,2], color = "blue")
 #plt.fill_between(x, predict_mean_ci_low1, predict_mean_ci_upp1, color = 'blue', alpha = 0.4)
 
-plt.plot(x[0:130], y2[0:130], label='Constrained Clustering with Bethe Hessian', color = "orange")
+#plt.plot(x[0:130], y2[0:130], label='Constrained Clustering with Bethe Hessian', color = "orange")
 #plt.plot(x, data2[:,2], color = "orange")
 #plt.fill_between(x, predict_mean_ci_low2, predict_mean_ci_upp2, color = 'orange', alpha = 0.4)
 
@@ -47,7 +47,7 @@ plt.plot(x[0:130], y2[0:130], label='Constrained Clustering with Bethe Hessian',
 #plt.fill_between(x, predict_mean_ci_low5, predict_mean_ci_upp5, color = 'purple', alpha = 0.4) 
 
 plt.legend(loc='best')
-plt.title('Comparison of normal spectral clustering and Bethe Hessian spectral clustering')
+plt.title('Failure of Unnormalized Spectral Clustering')
 plt.xlabel(r'$c_{in}$')
 plt.ylabel(r'Normalized Mutual Information')
 plt.show()

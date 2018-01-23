@@ -5,18 +5,18 @@ import math
 from statsmodels.stats.outliers_influence import summary_table
 from scipy.io import loadmat
 
-no_alpha = 200 # number of points for x-axis, depends on how long it would take
+no_alpha = 110 # number of points for x-axis, depends on how long it would take
 q_range = [2, 3, 5]
 theoretical_values = [q_range[0]*math.sqrt(3), q_range[1]*math.sqrt(3), q_range[2]*math.sqrt(3)]
 q = 2 
 
 # fetch results
 result = np.load('result.npz')
-y1 = result['arr_0'][q]
-y2 = result['arr_1'][q]
-y3 = result['arr_2'][0,q]
-y4 = result['arr_2'][1,q]
-y5 = result['arr_2'][2,q]
+y1 = result['arr_0'][q][0:no_alpha]
+y2 = result['arr_1'][q][0:no_alpha]
+y3 = result['arr_2'][0,q][0:no_alpha]
+y4 = result['arr_2'][1,q][0:no_alpha]
+y5 = result['arr_2'][2,q][0:no_alpha]
 x =  alpha_range = np.linspace( 0.75 * theoretical_values[q], 1.5 * q_range[q] * theoretical_values[q], no_alpha)
 
 # regression
@@ -49,7 +49,7 @@ plt.plot(x, y1, label='Unnormalized Spectral Clustering', color = "blue")
 #plt.plot(x, data1[:,2], color = "blue")
 #plt.fill_between(x, predict_mean_ci_low1, predict_mean_ci_upp1, color = 'blue', alpha = 0.4)
 
-plt.plot(x, y2, label='Constrained Clustering with Bethe Hessian', color = "orange")
+plt.plot(x, y2, label='Clustering with Bethe Hessian', color = "orange")
 #plt.plot(x, data2[:,2], color = "orange")
 #plt.fill_between(x, predict_mean_ci_low2, predict_mean_ci_upp2, color = 'orange', alpha = 0.4)
 
@@ -67,7 +67,7 @@ plt.plot(x, y5, label='Modified FAST-GE-2.0: 75%', color = "purple")
 
 plt.axvline(x = theoretical_values[q], linewidth = 2, color="black")
 #plt.text(theoretical_values[q]-3, -1, 'Theoretical Value', fontsize=12)
-plt.annotate('Theoretical Value', (0,0), (25, -20), xycoords='axes fraction', textcoords='offset points', va='top')
+plt.annotate('Theoretical Value', (0,0), (5, -20), xycoords='axes fraction', textcoords='offset points', va='top')
 
 plt.legend(loc='best')
 plt.title(r'NMI of different clustering methods as a function of $c_{in}-c_{out}$ for 5 clusters')

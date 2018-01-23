@@ -1,0 +1,9 @@
+\begin{thenomenclature} 
+
+ \nomgroup{Symbols}
+
+  \item [{$X$}]\begingroup Explain here what does X mean\nomeqref {1.0}
+		\nompageref{1}
+  \item [{$Y$}]\begingroup hue\nomeqref {1.0}\nompageref{1}
+
+\end{thenomenclature}

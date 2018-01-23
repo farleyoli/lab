@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.7.1-161114-2.6 (utf8.euc) (TeX Live 2017) (preloaded format=platex 2017.6.30)  22 JAN 2018 23:45
+This is e-pTeX, Version 3.14159265-p3.7.1-161114-2.6 (utf8.euc) (TeX Live 2017) (preloaded format=platex 2017.6.30)  23 JAN 2018 10:12
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -133,6 +133,8 @@ Package: enumitem 2011/09/28 v3.5.2 Customized lists
 \enit@inbox=\box44
 \enitdp@description=\count106
 )
+\enitdp@abbrv=\count107
+
 (/usr/local/texlive/2017/texmf-dist/tex/latex/geometry/geometry.sty
 Package: geometry 2010/09/12 v5.6 Page Geometry
 
@@ -146,9 +148,9 @@ Package ifvtex Info: VTeX not detected.
 (/usr/local/texlive/2017/texmf-dist/tex/generic/ifxetex/ifxetex.sty
 Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 )
-\Gm@cnth=\count107
-\Gm@cntv=\count108
-\c@Gm@tempcnt=\count109
+\Gm@cnth=\count108
+\Gm@cntv=\count109
+\c@Gm@tempcnt=\count110
 \Gm@bindingoffset=\dimen133
 \Gm@wd@mp=\dimen134
 \Gm@odd@mp=\dimen135
@@ -174,7 +176,7 @@ Language: english 2017/01/24 v3.3q English support from the babel system
 
 (/usr/local/texlive/2017/texmf-dist/tex/generic/babel/babel.def
 File: babel.def 2017/05/19 3.10 Babel common definitions
-\babel@savecnt=\count110
+\babel@savecnt=\count111
 \U@D=\dimen143
 )
 \l@canadian = a dialect from \language\l@american 
@@ -186,15 +188,15 @@ Package: mathtools 2015/11/12 v1.18 mathematical typesetting tools
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/tools/calc.sty
 Package: calc 2014/10/28 v4.3 Infix arithmetic (KKT,FJ)
-\calc@Acount=\count111
-\calc@Bcount=\count112
+\calc@Acount=\count112
+\calc@Bcount=\count113
 \calc@Adimen=\dimen144
 \calc@Bdimen=\dimen145
 \calc@Askip=\skip47
 \calc@Bskip=\skip48
 LaTeX Info: Redefining \setlength on input line 80.
 LaTeX Info: Redefining \addtolength on input line 81.
-\calc@Ccount=\count113
+\calc@Ccount=\count114
 \calc@Cskip=\skip49
 )
 (/usr/local/texlive/2017/texmf-dist/tex/latex/mathtools/mhsetup.sty
@@ -204,7 +206,7 @@ LaTeX Info: Thecontrolsequence`\('isalreadyrobust on input line 129.
 LaTeX Info: Thecontrolsequence`\)'isalreadyrobust on input line 129.
 LaTeX Info: Thecontrolsequence`\['isalreadyrobust on input line 129.
 LaTeX Info: Thecontrolsequence`\]'isalreadyrobust on input line 129.
-\g_MT_multlinerow_int=\count114
+\g_MT_multlinerow_int=\count115
 \l_MT_multwidth_dim=\dimen146
 \origjot=\skip50
 \l_MT_shortvdotswithinadjustabove_dim=\dimen147
@@ -226,17 +228,17 @@ Package: expl3 2017/05/13 L3 programming layer (loader)
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/l3kernel/expl3-code.tex
 Package: expl3 2017/05/13 L3 programming layer (code)
-\c_max_int=\count115
-\l_tmpa_int=\count116
-\l_tmpb_int=\count117
-\g_tmpa_int=\count118
-\g_tmpb_int=\count119
-\g__prg_map_int=\count120
-\c_log_iow=\count121
-\l_iow_line_count_int=\count122
-\l__iow_line_target_int=\count123
-\l__iow_one_indent_int=\count124
-\l__iow_indent_int=\count125
+\c_max_int=\count116
+\l_tmpa_int=\count117
+\l_tmpb_int=\count118
+\g_tmpa_int=\count119
+\g_tmpb_int=\count120
+\g__prg_map_int=\count121
+\c_log_iow=\count122
+\l_iow_line_count_int=\count123
+\l__iow_line_target_int=\count124
+\l__iow_one_indent_int=\count125
+\l__iow_indent_int=\count126
 \c_zero_dim=\dimen153
 \c_max_dim=\dimen154
 \l_tmpa_dim=\dimen155
@@ -255,30 +257,30 @@ Package: expl3 2017/05/13 L3 programming layer (code)
 \l_tmpb_muskip=\muskip14
 \g_tmpa_muskip=\muskip15
 \g_tmpb_muskip=\muskip16
-\l_keys_choice_int=\count126
-\c__fp_leading_shift_int=\count127
-\c__fp_middle_shift_int=\count128
-\c__fp_trailing_shift_int=\count129
-\c__fp_big_leading_shift_int=\count130
-\c__fp_big_middle_shift_int=\count131
-\c__fp_big_trailing_shift_int=\count132
-\c__fp_Bigg_leading_shift_int=\count133
-\c__fp_Bigg_middle_shift_int=\count134
-\c__fp_Bigg_trailing_shift_int=\count135
-\c__fp_rand_size_int=\count136
-\c__fp_rand_four_int=\count137
-\c__fp_rand_eight_int=\count138
-\l__sort_length_int=\count139
-\l__sort_min_int=\count140
-\l__sort_top_int=\count141
-\l__sort_max_int=\count142
-\l__sort_true_max_int=\count143
-\l__sort_block_int=\count144
-\l__sort_begin_int=\count145
-\l__sort_end_int=\count146
-\l__sort_A_int=\count147
-\l__sort_B_int=\count148
-\l__sort_C_int=\count149
+\l_keys_choice_int=\count127
+\c__fp_leading_shift_int=\count128
+\c__fp_middle_shift_int=\count129
+\c__fp_trailing_shift_int=\count130
+\c__fp_big_leading_shift_int=\count131
+\c__fp_big_middle_shift_int=\count132
+\c__fp_big_trailing_shift_int=\count133
+\c__fp_Bigg_leading_shift_int=\count134
+\c__fp_Bigg_middle_shift_int=\count135
+\c__fp_Bigg_trailing_shift_int=\count136
+\c__fp_rand_size_int=\count137
+\c__fp_rand_four_int=\count138
+\c__fp_rand_eight_int=\count139
+\l__sort_length_int=\count140
+\l__sort_min_int=\count141
+\l__sort_top_int=\count142
+\l__sort_max_int=\count143
+\l__sort_true_max_int=\count144
+\l__sort_block_int=\count145
+\l__sort_begin_int=\count146
+\l__sort_end_int=\count147
+\l__sort_A_int=\count148
+\l__sort_B_int=\count149
+\l__sort_C_int=\count150
 \c_empty_box=\box45
 \l_tmpa_box=\box46
 \l_tmpb_box=\box47
@@ -325,22 +327,22 @@ File: l3dvidpfmx.def 2017/03/18 v L3 Experimental driver: dvipdfmx
 \l__driver_tmp_box=\box60
 ))
 Package: xparse 2017/05/13 L3 Experimental document command parser
-\l__xparse_current_arg_int=\count150
-\g__xparse_grabber_int=\count151
-\l__xparse_m_args_int=\count152
-\l__xparse_mandatory_args_int=\count153
-\l__xparse_v_nesting_int=\count154
+\l__xparse_current_arg_int=\count151
+\g__xparse_grabber_int=\count152
+\l__xparse_m_args_int=\count153
+\l__xparse_mandatory_args_int=\count154
+\l__xparse_v_nesting_int=\count155
 )
 .................................................
 . LaTeX info: "xparse/define-command"
 . 
 . Defining command \iintvargs with sig. '>{\SplitArgument {1}{,}}m' on line
-. 99.
+. 101.
 .................................................
 .................................................
 . LaTeX info: "xparse/define-command"
 . 
-. Defining command \iintvargsaux with sig. 'mm' on line 100.
+. Defining command \iintvargsaux with sig. 'mm' on line 102.
 .................................................
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/algorithms/algorithm.sty
@@ -349,7 +351,7 @@ nment
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count155
+\c@float@type=\count156
 \float@exts=\toks23
 \float@box=\box61
 \@float@everytoks=\toks24
@@ -359,7 +361,7 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
 )
 \@float@every@algorithm=\toks25
-\c@algorithm=\count156
+\c@algorithm=\count157
 )
 (/usr/local/texlive/2017/texmf-dist/tex/latex/algorithmicx/algpseudocode.sty
 Package: algpseudocode 
@@ -368,42 +370,42 @@ Package: algpseudocode
 Package: algorithmicx 2005/04/27 v1.2 Algorithmicx
 
 Document Style algorithmicx 1.2 - a greatly improved `algorithmic' style
-\c@ALG@line=\count157
-\c@ALG@rem=\count158
-\c@ALG@nested=\count159
+\c@ALG@line=\count158
+\c@ALG@rem=\count159
+\c@ALG@nested=\count160
 \ALG@tlm=\skip57
 \ALG@thistlm=\skip58
-\c@ALG@Lnr=\count160
-\c@ALG@blocknr=\count161
-\c@ALG@storecount=\count162
-\c@ALG@tmpcounter=\count163
+\c@ALG@Lnr=\count161
+\c@ALG@blocknr=\count162
+\c@ALG@storecount=\count163
+\c@ALG@tmpcounter=\count164
 \ALG@tmplength=\skip59
 )
 Document Style - pseudocode environments for use with the `algorithmicx' style
 )
-\c@theorem=\count164
+\c@theorem=\count165
  (./report.aux)
 \openout1 = `report.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 131.
-LaTeX Font Info:    ... okay on input line 131.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 131.
-LaTeX Font Info:    ... okay on input line 131.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 131.
-LaTeX Font Info:    ... okay on input line 131.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 131.
-LaTeX Font Info:    ... okay on input line 131.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 131.
-LaTeX Font Info:    ... okay on input line 131.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 131.
-LaTeX Font Info:    ... okay on input line 131.
-LaTeX Font Info:    Checking defaults for JY1/mc/m/n on input line 131.
-LaTeX Font Info:    ... okay on input line 131.
-LaTeX Font Info:    Checking defaults for JT1/mc/m/n on input line 131.
-LaTeX Font Info:    ... okay on input line 131.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 133.
+LaTeX Font Info:    ... okay on input line 133.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 133.
+LaTeX Font Info:    ... okay on input line 133.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 133.
+LaTeX Font Info:    ... okay on input line 133.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 133.
+LaTeX Font Info:    ... okay on input line 133.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 133.
+LaTeX Font Info:    ... okay on input line 133.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 133.
+LaTeX Font Info:    ... okay on input line 133.
+LaTeX Font Info:    Checking defaults for JY1/mc/m/n on input line 133.
+LaTeX Font Info:    ... okay on input line 133.
+LaTeX Font Info:    Checking defaults for JT1/mc/m/n on input line 133.
+LaTeX Font Info:    ... okay on input line 133.
  (I search kanjifont definition file: . . )
 (I search font definition file: . . . . . . . )
-LaTeX Font Info:    Try loading font information for OT1+ptm on input line 131.
+LaTeX Font Info:    Try loading font information for OT1+ptm on input line 133.
 
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/psnfss/ot1ptm.fd
@@ -443,38 +445,38 @@ File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-LaTeX Font Info:    Try loading font information for U+msa on input line 132.
+LaTeX Font Info:    Try loading font information for U+msa on input line 134.
 (/usr/local/texlive/2017/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 132.
+LaTeX Font Info:    Try loading font information for U+msb on input line 134.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for U+stmry on input line 132.
+LaTeX Font Info:    Try loading font information for U+stmry on input line 134.
 
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/stmaryrd/Ustmry.fd)
-Underfull \vbox (badness 10000) detected at line 132
+Underfull \vbox (badness 10000) detected at line 134
  []
 
 [-1
 
 ]
 LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <14.4> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 144.
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 146.
 LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <14.4> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 144.
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 146.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.4> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 144.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 146.
  [0]
 LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <20.74> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 155.
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 157.
 LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <20.74> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 155.
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 157.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <20.74> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 155.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 157.
  (./report.toc
 LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <10.95> not available
 (Font)              Font shape `JT1/gt/m/n' tried instead on input line 2.
@@ -498,35 +500,35 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.95> not available
 Chap.  1 
 [1
 
-]
+] [2]
 Chap.  2 
-LaTeX Font Info:    Try loading font information for OMS+ptm on input line 190.
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 235.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/psnfss/omsptm.fd
 File: omsptm.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 190.
- [2
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 235.
+ [3
 
 ]
 
 LaTeX Font Warning: Font shape `JT1/mc/m/it' undefined
-(Font)              using `JT1/mc/m/n' instead on input line 208.
+(Font)              using `JT1/mc/m/n' instead on input line 253.
 
 
 LaTeX Font Warning: Font shape `JY1/mc/m/it' undefined
-(Font)              using `JY1/mc/m/n' instead on input line 208.
+(Font)              using `JY1/mc/m/n' instead on input line 253.
 
-[3] [4] [5] [6]
+[4] [5] [6] [7]
 LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <12> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 393.
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 438.
 LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <12> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 393.
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 438.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 393.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 438.
 
-Overfull \hbox (27.82115pt too wide) in paragraph at lines 414--416
+Overfull \hbox (27.82115pt too wide) in paragraph at lines 459--461
 []\OT1/ptm/m/n/10.95 Let $\OML/cmm/m/it/10.95 G \OT1/cmr/m/n/10.95 = (\OML/cmm/
 m/it/10.95 V; E\OT1/cmr/m/n/10.95 )$ \OT1/ptm/m/n/10.95 be a graph of or-der $\
 OML/cmm/m/it/10.95 m$ \OT1/ptm/m/n/10.95 with ad-ja-cency ma-trix $\OML/cmm/m/i
@@ -535,54 +537,45 @@ et $\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 C[]; C[]; []  ; C[]\OT1/cmr/m/n/10.
 95 )$\OT1/ptm/m/n/10.95 ,
  []
 
-[7] [8] [9] [10]
-Overfull \hbox (28.4717pt too wide) in paragraph at lines 609--609
+[8] [9] [10] [11]
+Overfull \hbox (28.4717pt too wide) in paragraph at lines 654--654
 [] 
  []
 
-[11] [12]
+[12] [13]
 Chap.  3 
-[13
+[14
 
-] [14]
-
-LaTeX Warning: Reference `falhaSC' on page 15 undefined on input line 736.
-
-
-LaTeX Warning: Reference `falhaSC' on page 15 undefined on input line 736.
-
-[15] [16]
+] [15]
+File: figures/spec_fail.png Graphic file (type bmp)
+ <figures/spec_fail.png> [16] [17] [18]
 Chap.  4 
-[17
+[19
 
-] [18]
+] [20]
 File: figures/gm.png Graphic file (type bmp)
- <figures/gm.png> [19]
+ <figures/gm.png> [21]
 File: figures/gh.png Graphic file (type bmp)
- <figures/gh.png> [20] [21] [22] [23] [24]
-[25]
+ <figures/gh.png> [22] [23] [24] [25] [26]
+[27]
 Chap.  5 
-[26
+[28
 
-] [27] [28]
+] [29] [30]
 Chap.  6 
-[29
+[31
 
-] [30]
+] [32]
 File: figures/bethe_hessian_triumph.png Graphic file (type bmp)
- <figures/bethe_hessian_triumph.png>
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[31]
+ <figures/bethe_hessian_triumph.png> [33]
 File: figures/MR.png Graphic file (type bmp)
  <figures/MR.png>
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[32] [33]
+[34] [35]
 File: figures/CDV1.png Graphic file (type bmp)
- <figures/CDV1.png> [34]
+ <figures/CDV1.png> [36]
 File: figures/ACDV1.png Graphic file (type bmp)
  <figures/ACDV1.png>
 
@@ -598,11 +591,11 @@ File: figures/ACDV3.png Graphic file (type bmp)
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[35] [36] [37] [38]
+[37] [38] [39] [40] [41]
 Chap.  7 
-[39
+[42
 
-] [40
+] [43
 
 ] (./report.bbl
 
@@ -613,23 +606,20 @@ LaTeX Font Warning: Font shape `JT1/gt/m/it' undefined
 LaTeX Font Warning: Font shape `JY1/gt/m/it' undefined
 (Font)              using `JY1/gt/m/n' instead on input line 11.
 
-[41
+[44
 
-]) [42] (./report.aux)
+]) [45] (./report.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-
-LaTeX Warning: There were undefined references.
-
  ) 
 Here is how much of TeX's memory you used:
- 11600 strings out of 493653
- 207359 string characters out of 6148874
- 267739 words of memory out of 5000000
- 15066 multiletter control sequences out of 15000+600000
- 31274 words of font info for 112 fonts, out of 8000000 for 9000
+ 11650 strings out of 493653
+ 207848 string characters out of 6148874
+ 268238 words of memory out of 5000000
+ 15110 multiletter control sequences out of 15000+600000
+ 33023 words of font info for 119 fonts, out of 8000000 for 9000
  929 hyphenation exceptions out of 8191
- 32i,19n,42p,10452b,372s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 32i,19n,54p,10452b,372s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on report.dvi (47 pages, 148820 bytes).
+Output written on report.dvi (50 pages, 156888 bytes).

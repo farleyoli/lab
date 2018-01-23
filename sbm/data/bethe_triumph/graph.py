@@ -46,7 +46,8 @@ plt.plot(x[0:130], y2[0:130], label='Clustering with Bethe Hessian', color = "or
 #plt.plot(x, data5[:,2], color = "purple")
 #plt.fill_between(x, predict_mean_ci_low5, predict_mean_ci_upp5, color = 'purple', alpha = 0.4) 
 
-plt.legend(loc='best')
+leg = plt.legend(fancybox = True, loc='best')
+leg.get_frame().set_alpha(0.1)
 plt.title('Comparison of normal spectral clustering and Bethe Hessian spectral clustering')
 plt.xlabel(r'$c_{in}$')
 plt.ylabel(r'Normalized Mutual Information')

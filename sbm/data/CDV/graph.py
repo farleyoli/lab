@@ -45,7 +45,7 @@ plt.plot(x, y1, label='Unnormalized Spectral Clustering', color = "blue")
 #plt.plot(x, data1[:,2], color = "blue")
 #plt.fill_between(x, predict_mean_ci_low1, predict_mean_ci_upp1, color = 'blue', alpha = 0.4)
 
-plt.plot(x, y2, label='Constrained Clustering with Bethe Hessian', color = "orange")
+plt.plot(x, y2, label='Clustering with Bethe Hessian', color = "orange")
 #plt.plot(x, data2[:,2], color = "orange")
 #plt.fill_between(x, predict_mean_ci_low2, predict_mean_ci_upp2, color = 'orange', alpha = 0.4)
 
@@ -61,7 +61,7 @@ plt.plot(x, y5, label='Modified FAST-GE-2.0: Only $L_H$', color = "purple")
 #plt.plot(x, data5[:,2], color = "purple")
 #plt.fill_between(x, predict_mean_ci_low5, predict_mean_ci_upp5, color = 'purple', alpha = 0.4) 
 
-plt.legend(loc='best')
+plt.legend(loc='best', prop ={'size': 8})
 plt.title('Comparison of different modifications of FAST-GE-2.0')
 plt.xlabel(r'$n_c$: Number of constrains used')
 plt.ylabel(r'Normalized Mutual Information')
