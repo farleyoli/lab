@@ -1,46 +1,11 @@
 \begin{thebibliography}{10}
 
-\bibitem{minmax}
-Haim Avron, Esmond Ng, and Sivan Toledo.
-\newblock A generalized courant-fischer minimax theorem.
-\newblock 2008.
-
-\bibitem{templates}
-Zhaojun Bai, James Demmel, Jack Dongarra, Axel Ruhe, and Henk Van Der~Vorst.
-\newblock Templates for the solution of algebraic eigenvalue problems.
-\newblock {\em Numerical Algorithms}, 27(4):388, 2001.
-
-\bibitem{fastge1}
-Mihai Cucuringu, Ioannis Koutis, Sanjay Chawla, Gary Miller, and Richard Peng.
-\newblock Simple and scalable constrained clustering: A generalized spectral
-  method.
-\newblock In {\em Artificial Intelligence and Statistics}, pages 445--454,
-  2016.
-
 \bibitem{fastge2}
 Chengming Jiang, Huiqing Xie, and Zhaojun Bai.
 \newblock Robust and efficient computation of eigenvectors in a generalized
   spectral method for constrained clustering.
 \newblock In {\em Artificial Intelligence and Statistics}, pages 757--766,
   2017.
-
-\bibitem{bethe2}
-Florent Krzakala, Cristopher Moore, Elchanan Mossel, Joe Neeman, Allan Sly,
-  Lenka Zdeborov{\'a}, and Pan Zhang.
-\newblock Spectral redemption in clustering sparse networks.
-\newblock {\em Proceedings of the National Academy of Sciences},
-  110(52):20935--20940, 2013.
-
-\bibitem{mahoney}
-M.~W. {Mahoney}.
-\newblock {Lecture Notes on Spectral Graph Methods}.
-\newblock {\em ArXiv e-prints}, August 2016.
-
-\bibitem{ramanujan}
-Laurent Massouli{\'e}.
-\newblock Community detection thresholds and the weak ramanujan property.
-\newblock In {\em Proceedings of the forty-sixth annual ACM symposium on Theory
-  of computing}, pages 694--703. ACM, 2014.
 
 \bibitem{ng}
 Andrew~Y. Ng, Michael~I. Jordan, and Yair Weiss.
@@ -49,11 +14,20 @@ Andrew~Y. Ng, Michael~I. Jordan, and Yair Weiss.
   Advances in Neural Information Processing Systems 14}, pages 849--856. MIT
   Press, 2002.
 
-\bibitem{bethe}
-Alaa Saade, Florent Krzakala, and Lenka Zdeborov{\'a}.
-\newblock Spectral clustering of graphs with the bethe hessian.
-\newblock In {\em Advances in Neural Information Processing Systems}, pages
-  406--414, 2014.
+\bibitem{tutorial}
+Ulrike Von~Luxburg.
+\newblock A tutorial on spectral clustering.
+\newblock {\em Statistics and computing}, 17(4):395--416, 2007.
+
+\bibitem{mahoney}
+M.~W. {Mahoney}.
+\newblock {Lecture Notes on Spectral Graph Methods}.
+\newblock {\em ArXiv e-prints}, August 2016.
+
+\bibitem{minmax}
+Haim Avron, Esmond Ng, and Sivan Toledo.
+\newblock A generalized courant-fischer minimax theorem.
+\newblock 2008.
 
 \bibitem{normalized}
 Jianbo Shi and Jitendra Malik.
@@ -61,20 +35,46 @@ Jianbo Shi and Jitendra Malik.
 \newblock {\em IEEE Transactions on pattern analysis and machine intelligence},
   22(8):888--905, 2000.
 
-\bibitem{nmi}
-Alexander Strehl and Joydeep Ghosh.
-\newblock Cluster ensembles---a knowledge reuse framework for combining
-  multiple partitions.
-\newblock {\em Journal of machine learning research}, 3(Dec):583--617, 2002.
+\bibitem{bethe2}
+Florent Krzakala, Cristopher Moore, Elchanan Mossel, Joe Neeman, Allan Sly,
+  Lenka Zdeborov{\'a}, and Pan Zhang.
+\newblock Spectral redemption in clustering sparse networks.
+\newblock {\em Proceedings of the National Academy of Sciences},
+  110(52):20935--20940, 2013.
 
-\bibitem{tutorial}
-Ulrike Von~Luxburg.
-\newblock A tutorial on spectral clustering.
-\newblock {\em Statistics and computing}, 17(4):395--416, 2007.
+\bibitem{bethe}
+Alaa Saade, Florent Krzakala, and Lenka Zdeborov{\'a}.
+\newblock Spectral clustering of graphs with the bethe hessian.
+\newblock In {\em Advances in Neural Information Processing Systems}, pages
+  406--414, 2014.
+
+\bibitem{ramanujan}
+Laurent Massouli{\'e}.
+\newblock Community detection thresholds and the weak ramanujan property.
+\newblock In {\em Proceedings of the forty-sixth annual ACM symposium on Theory
+  of computing}, pages 694--703. ACM, 2014.
 
 \bibitem{circle}
 Eugene~P Wigner.
 \newblock On the distribution of the roots of certain symmetric matrices.
 \newblock {\em Annals of Mathematics}, pages 325--327, 1958.
+
+\bibitem{fastge1}
+Mihai Cucuringu, Ioannis Koutis, Sanjay Chawla, Gary Miller, and Richard Peng.
+\newblock Simple and scalable constrained clustering: A generalized spectral
+  method.
+\newblock In {\em Artificial Intelligence and Statistics}, pages 445--454,
+  2016.
+
+\bibitem{templates}
+Zhaojun Bai, James Demmel, Jack Dongarra, Axel Ruhe, and Henk Van Der~Vorst.
+\newblock Templates for the solution of algebraic eigenvalue problems.
+\newblock {\em Numerical Algorithms}, 27(4):388, 2001.
+
+\bibitem{nmi}
+Alexander Strehl and Joydeep Ghosh.
+\newblock Cluster ensembles---a knowledge reuse framework for combining
+  multiple partitions.
+\newblock {\em Journal of machine learning research}, 3:583--617, 2002.
 
 \end{thebibliography}

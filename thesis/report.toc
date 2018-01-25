@@ -1,6 +1,6 @@
 \select@language {english}
 \contentsline {chapter}{\numberline {Chap. 1}Introduction}{1}
-\contentsline {section}{\numberline {1.1}Notations}{1}
+\contentsline {section}{\numberline {1.1}Notation}{1}
 \contentsline {chapter}{\numberline {Chap. 2}Spectral clustering}{3}
 \contentsline {section}{\numberline {2.1}The clustering problem}{3}
 \contentsline {section}{\numberline {2.2}Preliminary definitions}{5}
@@ -9,10 +9,10 @@
 \contentsline {subsection}{\numberline {2.4.1}Background}{8}
 \contentsline {subsection}{\numberline {2.4.2}Derivation}{11}
 \contentsline {chapter}{\numberline {Chap. 3}Spectral clustering with the Bethe Hessian}{14}
-\contentsline {section}{\numberline {3.1}Stochastic Block Model}{14}
+\contentsline {section}{\numberline {3.1}Stochastic block model}{14}
 \contentsline {section}{\numberline {3.2}Bethe Hessian}{15}
 \contentsline {chapter}{\numberline {Chap. 4}Constrained spectral clustering with FAST-GE-2.0}{19}
-\contentsline {section}{\numberline {4.1}Constrained Clustering}{19}
+\contentsline {section}{\numberline {4.1}Constrained clustering}{19}
 \contentsline {section}{\numberline {4.2}FAST-GE-2.0}{20}
 \contentsline {subsection}{\numberline {4.2.1}Auxiliary graphs}{20}
 \contentsline {subsection}{\numberline {4.2.2}Objective function}{22}

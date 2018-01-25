@@ -11,7 +11,7 @@
 \contentsline {figure}{\numberline {6.1}{\ignorespaces Experimental results for clustering using unnormalized spectral clustering and Bethe Hessian clustering}}{33}
 \contentsline {figure}{\numberline {6.2}{\ignorespaces Experimental results for constrained clustering using FAST-GE-2.0 and CVQE}}{35}
 \contentsline {figure}{\numberline {6.3}{\ignorespaces Experimental results for constrained clustering using five different methods}}{36}
-\contentsline {figure}{\numberline {6.4}{\ignorespaces Experimental results for clustering and constrained clustering as a function of $c_\text {in} - c_\text {out}$ for the number of communities $k=2$}}{39}
-\contentsline {figure}{\numberline {6.5}{\ignorespaces Experimental results for clustering and constrained clustering as a function of $c_\text {in} - c_\text {out}$ for the number of communities $k=3$}}{40}
-\contentsline {figure}{\numberline {6.6}{\ignorespaces Experimental results for clustering and constrained clustering as a function of $c_\text {in} - c_\text {out}$ for the number of communities $k=5$}}{41}
+\contentsline {figure}{\numberline {6.4}{\ignorespaces Experimental results for clustering and constrained clustering as a function of $c_\text {in} - c_\text {out}$ for the number of communities $k=2$}}{38}
+\contentsline {figure}{\numberline {6.5}{\ignorespaces Experimental results for clustering and constrained clustering as a function of $c_\text {in} - c_\text {out}$ for the number of communities $k=3$}}{39}
+\contentsline {figure}{\numberline {6.6}{\ignorespaces Experimental results for clustering and constrained clustering as a function of $c_\text {in} - c_\text {out}$ for the number of communities $k=5$}}{40}
 \addvspace {10\p@ }

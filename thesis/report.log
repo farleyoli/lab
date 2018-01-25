@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.7.1-161114-2.6 (utf8.euc) (TeX Live 2017) (preloaded format=platex 2017.6.30)  23 JAN 2018 10:12
+This is e-pTeX, Version 3.14159265-p3.7.1-161114-2.6 (utf8.euc) (TeX Live 2017) (preloaded format=platex 2017.6.30)  25 JAN 2018 21:59
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -31,6 +31,21 @@ LaTeX Font Info:    Overwriting symbol font `mincho' in version `bold'
 \bibindent=\dimen120
 \heisei=\count92
 )
+(/usr/local/texlive/2017/texmf-dist/tex/latex/graphics/color.sty
+Package: color 2016/07/10 v1.1e Standard LaTeX Color (DPC)
+
+(/usr/local/texlive/2017/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package color Info: Driver file: dvipdfmx.def on input line 147.
+
+(/usr/local/texlive/2017/texmf-dist/tex/latex/graphics-def/dvipdfmx.def
+File: dvipdfmx.def 2016/07/11 v4.12 LaTeX color/graphics driver for dvipdfmx (L
+3/ChoF)
+)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/graphics/dvipsnam.def
+File: dvipsnam.def 2016/06/17 v3.0m Driver-dependent file (DPC,SPQR)
+))
 (/usr/local/texlive/2017/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
 
@@ -48,11 +63,7 @@ Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
 Package graphics Info: Driver file: dvipdfmx.def on input line 99.
-
-(/usr/local/texlive/2017/texmf-dist/tex/latex/graphics-def/dvipdfmx.def
-File: dvipdfmx.def 2016/07/11 v4.12 LaTeX color/graphics driver for dvipdfmx (L
-3/ChoF)
-))
+)
 \Gin@req@height=\dimen121
 \Gin@req@width=\dimen122
 )
@@ -133,11 +144,21 @@ Package: enumitem 2011/09/28 v3.5.2 Customized lists
 \enit@inbox=\box44
 \enitdp@description=\count106
 )
+(/usr/local/texlive/2017/texmf-dist/tex/latex/interval/interval.sty
+Package: interval 2014/08/04 v0.3
+
+(/usr/local/texlive/2017/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
+\pgfkeys@pathtoks=\toks22
+\pgfkeys@temptoks=\toks23
+
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.c
+ode.tex
+\pgfkeys@tmptoks=\toks24
+))))
 \enitdp@abbrv=\count107
-
-(/usr/local/texlive/2017/texmf-dist/tex/latex/geometry/geometry.sty
+ (/usr/local/texlive/2017/texmf-dist/tex/latex/geometry/geometry.sty
 Package: geometry 2010/09/12 v5.6 Page Geometry
-
 (/usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/ifpdf.sty
 Package: ifpdf 2017/03/15 v3.2 Provides the ifpdf switch
 )
@@ -159,7 +180,7 @@ Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 \Gm@layoutheight=\dimen138
 \Gm@layouthoffset=\dimen139
 \Gm@layoutvoffset=\dimen140
-\Gm@dimlist=\toks22
+\Gm@dimlist=\toks25
 )
 (/usr/local/texlive/2017/texmf-dist/tex/latex/psnfss/times.sty
 Package: times 2005/04/12 PSNFSS-v9.2a (SPQR) 
@@ -337,12 +358,12 @@ Package: xparse 2017/05/13 L3 Experimental document command parser
 . LaTeX info: "xparse/define-command"
 . 
 . Defining command \iintvargs with sig. '>{\SplitArgument {1}{,}}m' on line
-. 101.
+. 105.
 .................................................
 .................................................
 . LaTeX info: "xparse/define-command"
 . 
-. Defining command \iintvargsaux with sig. 'mm' on line 102.
+. Defining command \iintvargsaux with sig. 'mm' on line 106.
 .................................................
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/algorithms/algorithm.sty
@@ -352,15 +373,15 @@ nment
 (/usr/local/texlive/2017/texmf-dist/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \c@float@type=\count156
-\float@exts=\toks23
+\float@exts=\toks26
 \float@box=\box61
-\@float@everytoks=\toks24
+\@float@everytoks=\toks27
 \@floatcapt=\box62
 )
 (/usr/local/texlive/2017/texmf-dist/tex/latex/base/ifthen.sty
 Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
 )
-\@float@every@algorithm=\toks25
+\@float@every@algorithm=\toks28
 \c@algorithm=\count157
 )
 (/usr/local/texlive/2017/texmf-dist/tex/latex/algorithmicx/algpseudocode.sty
@@ -387,25 +408,25 @@ Document Style - pseudocode environments for use with the `algorithmicx' style
  (./report.aux)
 \openout1 = `report.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 133.
-LaTeX Font Info:    ... okay on input line 133.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 133.
-LaTeX Font Info:    ... okay on input line 133.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 133.
-LaTeX Font Info:    ... okay on input line 133.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 133.
-LaTeX Font Info:    ... okay on input line 133.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 133.
-LaTeX Font Info:    ... okay on input line 133.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 133.
-LaTeX Font Info:    ... okay on input line 133.
-LaTeX Font Info:    Checking defaults for JY1/mc/m/n on input line 133.
-LaTeX Font Info:    ... okay on input line 133.
-LaTeX Font Info:    Checking defaults for JT1/mc/m/n on input line 133.
-LaTeX Font Info:    ... okay on input line 133.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 141.
+LaTeX Font Info:    ... okay on input line 141.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 141.
+LaTeX Font Info:    ... okay on input line 141.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 141.
+LaTeX Font Info:    ... okay on input line 141.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 141.
+LaTeX Font Info:    ... okay on input line 141.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 141.
+LaTeX Font Info:    ... okay on input line 141.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 141.
+LaTeX Font Info:    ... okay on input line 141.
+LaTeX Font Info:    Checking defaults for JY1/mc/m/n on input line 141.
+LaTeX Font Info:    ... okay on input line 141.
+LaTeX Font Info:    Checking defaults for JT1/mc/m/n on input line 141.
+LaTeX Font Info:    ... okay on input line 141.
  (I search kanjifont definition file: . . )
 (I search font definition file: . . . . . . . )
-LaTeX Font Info:    Try loading font information for OT1+ptm on input line 133.
+LaTeX Font Info:    Try loading font information for OT1+ptm on input line 141.
 
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/psnfss/ot1ptm.fd
@@ -445,38 +466,38 @@ File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-LaTeX Font Info:    Try loading font information for U+msa on input line 134.
+LaTeX Font Info:    Try loading font information for U+msa on input line 142.
 (/usr/local/texlive/2017/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 134.
+LaTeX Font Info:    Try loading font information for U+msb on input line 142.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for U+stmry on input line 134.
+LaTeX Font Info:    Try loading font information for U+stmry on input line 142.
 
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/stmaryrd/Ustmry.fd)
-Underfull \vbox (badness 10000) detected at line 134
+Underfull \vbox (badness 10000) detected at line 142
  []
 
 [-1
 
 ]
 LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <14.4> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 146.
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 154.
 LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <14.4> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 146.
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 154.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.4> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 146.
- [0]
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 154.
+ [1]
 LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <20.74> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 157.
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 179.
 LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <20.74> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 157.
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 179.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <20.74> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 157.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 179.
  (./report.toc
 LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <10.95> not available
 (Font)              Font shape `JT1/gt/m/n' tried instead on input line 2.
@@ -484,17 +505,23 @@ LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <10.95> not available
 (Font)              Font shape `JY1/gt/m/n' tried instead on input line 2.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.95> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 2.
- [1
+ [2
 
 ])
 \tf@toc=\write3
 \openout3 = `report.toc'.
 
- [2] (./report.lof)
+ [3] (./report.lof)
 \tf@lof=\write4
 \openout4 = `report.lof'.
 
- [3
+ [4
+
+] (./report.lot)
+\tf@lot=\write5
+\openout5 = `report.lot'.
+
+ [5
 
 ]
 Chap.  1 
@@ -502,33 +529,33 @@ Chap.  1
 
 ] [2]
 Chap.  2 
-LaTeX Font Info:    Try loading font information for OMS+ptm on input line 235.
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 257.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/psnfss/omsptm.fd
 File: omsptm.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 235.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 257.
  [3
 
 ]
 
 LaTeX Font Warning: Font shape `JT1/mc/m/it' undefined
-(Font)              using `JT1/mc/m/n' instead on input line 253.
+(Font)              using `JT1/mc/m/n' instead on input line 275.
 
 
 LaTeX Font Warning: Font shape `JY1/mc/m/it' undefined
-(Font)              using `JY1/mc/m/n' instead on input line 253.
+(Font)              using `JY1/mc/m/n' instead on input line 275.
 
 [4] [5] [6] [7]
 LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <12> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 438.
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 460.
 LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <12> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 438.
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 460.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 438.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 460.
 
-Overfull \hbox (27.82115pt too wide) in paragraph at lines 459--461
+Overfull \hbox (27.82115pt too wide) in paragraph at lines 481--483
 []\OT1/ptm/m/n/10.95 Let $\OML/cmm/m/it/10.95 G \OT1/cmr/m/n/10.95 = (\OML/cmm/
 m/it/10.95 V; E\OT1/cmr/m/n/10.95 )$ \OT1/ptm/m/n/10.95 be a graph of or-der $\
 OML/cmm/m/it/10.95 m$ \OT1/ptm/m/n/10.95 with ad-ja-cency ma-trix $\OML/cmm/m/i
@@ -538,7 +565,7 @@ et $\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 C[]; C[]; []  ; C[]\OT1/cmr/m/n/10.
  []
 
 [8] [9] [10] [11]
-Overfull \hbox (28.4717pt too wide) in paragraph at lines 654--654
+Overfull \hbox (28.48141pt too wide) in paragraph at lines 676--676
 [] 
  []
 
@@ -576,22 +603,24 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 [34] [35]
 File: figures/CDV1.png Graphic file (type bmp)
  <figures/CDV1.png> [36]
-File: figures/ACDV1.png Graphic file (type bmp)
- <figures/ACDV1.png>
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `tbp') on input line 1505.
+
+File: figures/ACDV1.png Graphic file (type bmp)
+<figures/ACDV1.png>
+
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `tbp') on input line 1513.
 
 File: figures/ACDV2.png Graphic file (type bmp)
 <figures/ACDV2.png>
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `tbp') on input line 1521.
 
 File: figures/ACDV3.png Graphic file (type bmp)
-<figures/ACDV3.png>
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[37] [38] [39] [40] [41]
+<figures/ACDV3.png> [37] [38] [39] [40] [41]
 Chap.  7 
 [42
 
@@ -600,11 +629,11 @@ Chap.  7
 ] (./report.bbl
 
 LaTeX Font Warning: Font shape `JT1/gt/m/it' undefined
-(Font)              using `JT1/gt/m/n' instead on input line 11.
+(Font)              using `JT1/gt/m/n' instead on input line 7.
 
 
 LaTeX Font Warning: Font shape `JY1/gt/m/it' undefined
-(Font)              using `JY1/gt/m/n' instead on input line 11.
+(Font)              using `JY1/gt/m/n' instead on input line 7.
 
 [44
 
@@ -614,12 +643,12 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 11650 strings out of 493653
- 207848 string characters out of 6148874
- 268238 words of memory out of 5000000
- 15110 multiletter control sequences out of 15000+600000
+ 12317 strings out of 493653
+ 224032 string characters out of 6148874
+ 281633 words of memory out of 5000000
+ 15751 multiletter control sequences out of 15000+600000
  33023 words of font info for 119 fonts, out of 8000000 for 9000
  929 hyphenation exceptions out of 8191
- 32i,19n,54p,10452b,372s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 40i,19n,54p,10452b,380s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on report.dvi (50 pages, 156888 bytes).
+Output written on report.dvi (51 pages, 170716 bytes).
