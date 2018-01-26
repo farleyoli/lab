@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.7.1-161114-2.6 (utf8.euc) (TeX Live 2017) (preloaded format=platex 2017.6.30)  25 JAN 2018 21:59
+This is e-pTeX, Version 3.14159265-p3.7.1-161114-2.6 (utf8.euc) (TeX Live 2017) (preloaded format=platex 2017.6.30)  26 JAN 2018 13:35
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -491,13 +491,13 @@ LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <14.4> not available
 (Font)              Font shape `JY1/gt/m/n' tried instead on input line 154.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.4> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 154.
- [1]
+ [0]
 LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <20.74> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 179.
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 180.
 LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <20.74> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 179.
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 180.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <20.74> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 179.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 180.
  (./report.toc
 LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <10.95> not available
 (Font)              Font shape `JT1/gt/m/n' tried instead on input line 2.
@@ -505,23 +505,23 @@ LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <10.95> not available
 (Font)              Font shape `JY1/gt/m/n' tried instead on input line 2.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.95> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 2.
- [2
+ [1
 
 ])
 \tf@toc=\write3
 \openout3 = `report.toc'.
 
- [3] (./report.lof)
+ [2] (./report.lof)
 \tf@lof=\write4
 \openout4 = `report.lof'.
 
- [4
+ [3
 
 ] (./report.lot)
 \tf@lot=\write5
 \openout5 = `report.lot'.
 
- [5
+ [4
 
 ]
 Chap.  1 
@@ -529,43 +529,33 @@ Chap.  1
 
 ] [2]
 Chap.  2 
-LaTeX Font Info:    Try loading font information for OMS+ptm on input line 257.
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 258.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/psnfss/omsptm.fd
 File: omsptm.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 257.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 258.
  [3
 
 ]
 
 LaTeX Font Warning: Font shape `JT1/mc/m/it' undefined
-(Font)              using `JT1/mc/m/n' instead on input line 275.
+(Font)              using `JT1/mc/m/n' instead on input line 276.
 
 
 LaTeX Font Warning: Font shape `JY1/mc/m/it' undefined
-(Font)              using `JY1/mc/m/n' instead on input line 275.
+(Font)              using `JY1/mc/m/n' instead on input line 276.
 
 [4] [5] [6] [7]
 LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <12> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 460.
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 461.
 LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <12> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 460.
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 461.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 460.
-
-Overfull \hbox (27.82115pt too wide) in paragraph at lines 481--483
-[]\OT1/ptm/m/n/10.95 Let $\OML/cmm/m/it/10.95 G \OT1/cmr/m/n/10.95 = (\OML/cmm/
-m/it/10.95 V; E\OT1/cmr/m/n/10.95 )$ \OT1/ptm/m/n/10.95 be a graph of or-der $\
-OML/cmm/m/it/10.95 m$ \OT1/ptm/m/n/10.95 with ad-ja-cency ma-trix $\OML/cmm/m/i
-t/10.95 A \OMS/cmsy/m/n/10.95 2 \U/msb/m/n/10.95 R[]$\OT1/ptm/m/n/10.95 , and l
-et $\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 C[]; C[]; []  ; C[]\OT1/cmr/m/n/10.
-95 )$\OT1/ptm/m/n/10.95 ,
- []
-
-[8] [9] [10] [11]
-Overfull \hbox (28.48141pt too wide) in paragraph at lines 676--676
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 461.
+ [8] [9] [10] [11]
+Overfull \hbox (28.48141pt too wide) in paragraph at lines 677--677
 [] 
  []
 
@@ -605,19 +595,19 @@ File: figures/CDV1.png Graphic file (type bmp)
  <figures/CDV1.png> [36]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 1505.
+               Default added (so using `tbp') on input line 1506.
 
 File: figures/ACDV1.png Graphic file (type bmp)
 <figures/ACDV1.png>
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 1513.
+               Default added (so using `tbp') on input line 1514.
 
 File: figures/ACDV2.png Graphic file (type bmp)
 <figures/ACDV2.png>
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 1521.
+               Default added (so using `tbp') on input line 1522.
 
 File: figures/ACDV3.png Graphic file (type bmp)
 <figures/ACDV3.png> [37] [38] [39] [40] [41]
@@ -651,4 +641,4 @@ Here is how much of TeX's memory you used:
  929 hyphenation exceptions out of 8191
  40i,19n,54p,10452b,380s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on report.dvi (51 pages, 170716 bytes).
+Output written on report.dvi (51 pages, 171592 bytes).

@@ -176,6 +176,7 @@ Finally, we perform numerical experiments to corroborate the effectiveness of ou
 %\newpage
 
 \pagenumbering{roman} % I, II, III, IV 
+\setcounter{page}{0}
 \tableofcontents
 \listoffigures
 \listoftables
@@ -239,7 +240,7 @@ In this chapter we define the clustering problem, describe general ways in which
 spectral clustering as a solution to this problem which uses the Courant-Fischer Min-Max Theorem.
 The material here is based mainly on \cite{ng} and \cite{tutorial}.
 However, we have changed some of the notation and presentation, to make them fit better with the rest of this thesis.
-We have also provided several proofs which were omitted in the original papers.\footnote{For example, Proposition~\vref{xtlx}, Proposition~\vref{xtlx2}, Lemma~\vref{cond1}, Lemma~\vref{cond2} and Theorem~\vref{xtxcut}.}
+We have also provided several proofs which were omitted in the original papers for completeness.\footnote{For example, Proposition~\vref{xtlx}, Proposition~\vref{xtlx2}, Lemma~\vref{cond1}, Lemma~\vref{cond2} and Theorem~\vref{xtxcut}.}
 Readers who are already familiar with the derivation of spectral clustering may feel free to skip this chapter. 
 
 \section{The clustering problem}
@@ -306,7 +307,7 @@ We will explain why it outputs a valid result in the subsequent sections.
 Before entering the discussion of each derivation, we will give some definitions common to both approaches.
 Here we will assume that each data instance $d \in \mathcal D$ is a $n$-dimensional column vector, i.e. $\mathcal D \subseteq \mathbb R^{n }$.
 
-\begin{definition}
+\begin{definition}[Definition (from \cite{mahoney})]
    Let $\mathcal D$ be a dataset containing $m$ elements. The \textit{similarity matrix} $A \in \mathbb{R}^{m \times m}$ associated with $\mathcal D$ is defined as follows: 
    \begin{equation}
       A_{ij} = s\,(d_i,d_j), \text{ for each } (i,j) \in \Iintv{1,m}^2,
@@ -331,7 +332,7 @@ It is convenient here to establish a bijective relationship between the similari
    From now on, then, we will assume that definitions and propositions about graphs can also be applied to datasets and vice-versa.
 \end{remark}
 
-\begin{definition}
+\begin{definition}[Definition (from \cite{tutorial})]
    Let $A \in \mathbb R ^{m \times m}$ be the adjacency matrix of a graph $G = (V, E)$. The \textit{unnormalized Laplacian matrix} of the graph $G$ is defined by
    \begin{equation}
       L_0 = D - A,
@@ -339,7 +340,7 @@ It is convenient here to establish a bijective relationship between the similari
    where $D \in \mathbb R ^{m \times m}$ is defined to be the diagonal matrix whose $D_{ii}$ elements are given by the sum of the elements of the matrix $A$'s $i$-th row, for all $i \in \Iintv{1,m}$.
 \end{definition}
 
-\begin{definition}\label{unnormalized}
+\begin{definition}[Definition (from \cite{tutorial})]\label{unnormalized}
    Let $L_0 \in \mathbb R ^{m \times m}$ be the unnormalized Laplacian matrix of a graph $G = (V, E)$. The \textit{normalized Laplacian matrix} of the graph $G$ is defined by
    \begin{equation}
       L = D^{-1/2}L_0D^{-1/2},
@@ -359,7 +360,7 @@ Outside of this section, however, we will use the normal definition of unnormali
 
 Before entering the derivation, we need to outline a result.
 
-\begin{proposition}
+\begin{proposition}[Proposition in \cite{ng}]
    \label{bigeigenvalue}
    Let $G$ be a connected graph of order $m$.
    The normalized Laplacian associated with $G$ has the eigenvalue $1$ with positive eigenvector.
@@ -460,7 +461,7 @@ Before doing that, however, we need to give some definitions and outline some pr
 \subsection{Background}
 
 % Define Cut and NCut
-\begin{definition}
+\begin{definition}[Definition (from \cite{ng})]
    Let $G = (V,E)$ be a graph of order $m$ with adjacency matrix $A \in \mathbb R^{m \times m}$, and let $C$ be a proper subset of the set of vertices $V$. 
    Set $\overline{C} = V \setminus C$.
    The \textit{cut} of the subset $C$ is defined as follows:
@@ -477,7 +478,7 @@ However, a problem with this idea is that an eventual algorithm trying to achiev
 A possible approach to deal with this complication is to normalize the cut in such a way that small clusters are ``penalized''.
 This leads to the next definition.
 
-\begin{definition}
+\begin{definition}[Definition (from \cite{tutorial})]
    Let $G = (V,E)$ be a graph of order $m$ with adjacency matrix $A \in \mathbb R^{m \times m}$, and let $(C_1, C_2, \cdots, C_k)$, where $k \in \Iintv{2,m}$, be a proper partition of the set of vertices $V$.
    The \textit{normalized cut} of the partition $(C_1, C_2, \cdots, C_k)$ is defined as the following quantity:
    \begin{equation}
@@ -491,7 +492,7 @@ With this definition, we can think of the objective of spectral clustering as fo
 In the following proposition, we will show a useful form for expressions of the type $x^{\rm T}Lx$, where $L$ is a Laplacian matrix and $x$ is a real vector.
 As we will see later, this will come handy when we try to find relationships between Laplacian matrices and the normalized cut of certain partitions.
 
-\begin{proposition}\label{xtlx}
+\begin{proposition}[Proposition 1 in \cite{tutorial}]\label{xtlx}
    Let $G = (V,E)$ be a graph of order $m$ with adjacency matrix $A \in \mathbb R^{m \times m}$, and let $L_0$ be the unnormalized Laplacian matrix associated with $G$. Let $x \in \mathbb R^{m }$ be a real vector. Furthermore, for each $i \in \Iintv{1,m}$, let $d_i$ denote the degree of the vertex $v_i$. Then we have
    \begin{equation}
       x^{\rm T}L_0x = \frac{1}{2}\sum_{i,j = 1}^m A_{ij} \left( x_i - x_j \right)^2.
@@ -512,7 +513,7 @@ As we will see later, this will come handy when we try to find relationships bet
 
 The proposition above allows us to say the following:
 
-\begin{corollary}\label{unnormalizedLaplacianProperties}
+\begin{corollary}[Proposition 1 in \cite{tutorial}]\label{unnormalizedLaplacianProperties}
    The unnormalized Laplacian $L_0$ of a connected graph $G$ has the following properties:
    \begin{enumerate}
       \item It is positive semidefinite.
@@ -523,7 +524,7 @@ The proposition above allows us to say the following:
 
 And here we prove the generalization of the result above.
 
-\begin{proposition}\label{xtlx2}
+\begin{proposition}[Proposition 3 in \cite{tutorial}]\label{xtlx2}
    Let $G = (V,E)$ be a graph of order $m$ with no isolated vertices and with similarity matrix $A \in \mathbb R^{m \times m}$, let $L$ be the normalized Laplacian matrix associated with $G$, and let $x \in \mathbb R^{m} $ be a real vector. Furthermore, for each $i \in \Iintv{1,m}$, let $d_i$ denote the degree of the vertex $v_i$. Then we have
    \begin{equation}
       x^{\rm T}Lx = \frac{1}{2}\sum_{i,j = 1}^m A_{ij} \left( \frac{x_i}{\sqrt{d_i}} - \frac{x_j}{\sqrt{d_j}} \right)^2.
@@ -547,7 +548,7 @@ And here we prove the generalization of the result above.
 
 The proposition above allows us to say the following:
 
-\begin{corollary}
+\begin{corollary}[Proposition 3 in \cite{tutorial}]
    The normalized Laplacian $L$ of a connected graph $G$ has the following properties:
    \begin{enumerate}
       \item It is positive semidefinite.
@@ -560,7 +561,7 @@ Finally, before entering the second derivation of spectral clustering proper, we
 These theorems are collectively known as \textit{Courant-Fischer Min-Max Theorems}.
    It is worthy to note here that the Propositions~\ref{xtlx}~and~\vref{xtlx2} are also important because, as we will see next, the generalized Courant-Fischer Min-Max Theorem requires that one of the matrices concerned be positive semidefinite. 
 
-\begin{theorem} \label{minmax1}
+\begin{theorem}[Theorem 1 in \cite{minmax}]\label{minmax1}
    Let $m$ denote a positive integer, let $M \in \mathbb{C}^{m \times m}$ be a Hermitian matrix and denote its eigenvalues by $\lambda_1 \ge \lambda_2 \ge \cdots \ge \lambda_m$. 
    Assume $U$ and $V$ denote linear subspaces of $\mathbb C^{m }$.
    Then for all $i \in \Iintv{1,m}$ the following holds:
@@ -569,7 +570,7 @@ These theorems are collectively known as \textit{Courant-Fischer Min-Max Theorem
 \end{equation}
 \end{theorem}
 
-\begin{theorem} \label{minmax2}
+\begin{theorem}[Theorem 2 in \cite{minmax}] \label{minmax2}
    Let $m$ denote a positive integer, let $M \in \mathbb {C} ^{m \times m}$ be a Hermitian matrix and $N \in \mathbb C ^{m \times m}$ be a Hermitian positive semidefinite matrix such that $\mathcal N (N)  \subseteq \mathcal N (M)$.
    Assume $U$ and $V$ denote linear subspaces of $\mathbb C^{m }$.
    Denote by $r$ the rank of matrix $M$ and by $\lambda_1 \ge \lambda_2 \ge \cdots \ge \lambda_r$ the generalized eigenvalues of the pencil $(M,N)$.
@@ -594,7 +595,7 @@ is minimized.
 A proof that this optimization problem is NP-complete may be found at \cite{normalized}. 
 Therefore, we need another approach in order to perform clustering in a graph by minimizing the normalized cut.
 
-\begin{definition}
+\begin{definition}[Definition (from \cite{tutorial})]
 The indicator vector $x_C \in \mathbb R ^{m }$ is defined by:
    \begin{equation} \label{indicator}
    (x_C)_i =
@@ -609,7 +610,7 @@ for each $i \in \Iintv{1,m}$.
 Our goal here is to find a relationship between ${x_C}^{\rm T} L x_C$ and the normalized cut of $A$.
 Before that, consider the following lemmas:
 
-\begin{lemma} \label{cond1}
+\begin{lemma}[Proposition in \cite{tutorial}] \label{cond1}
    The following holds:
    \begin{equation}
       (D x_C)^{\rm T} 1_{m \times 1} = 0.
@@ -629,7 +630,7 @@ Before that, consider the following lemmas:
    \end{equation*}
 \end{proof}
 
-\begin{lemma} \label{cond2}
+\begin{lemma}[Proposition in \cite{tutorial}] \label{cond2}
    The following holds:
    \begin{equation}
       {x_C}^{\rm T}Dx_C = \vol (V).
@@ -652,7 +653,7 @@ Before that, consider the following lemmas:
 
 And here, finally, we relate ${x_C}^{\rm T}L{x_C}$ and the normalized cut.
 
-\begin{theorem}\label{xtxcut}
+\begin{theorem}[Proposition in \cite{tutorial}]\label{xtxcut}
    The following holds:
    \begin{equation}
       {x_C}^{\rm T}L_0{x_C} = \vol(V)\, \ncut (C, \overline C).
@@ -729,7 +730,7 @@ Its name comes from the facts that: (a) it is a probabilistic model, thus stocha
 Its study is important because it can be used as a benchmark for different algorithms that try to recover the underlying structure of the model from the graphs generated by it.
 
 % Definition
-\begin{definition}
+\begin{definition}[Definition (from \cite{bethe}, modified)]
    Let $V$ be a set of vertices, $k \in \mathbb Z_{>1}$, and $(a,b) \in {]0,1[}^2 $.
    Furthermore, let $\sigma$ be an arbitrary surjective function from $V$ to $\Iintv{1,k}$ called \textit{labeling function}.
    A graph $G=(V,E)$ of order $m$ is said to be \textit{generated by the stochastic block model with parameters} $a$, $b$, $k$ \textit{and} $\sigma$ if for every $(i,j) \in \Iintv{1,m}^2$, the following holds:
@@ -765,7 +766,7 @@ On the other hand, when the difference $a-b$ is very small (and it can be made a
 % solvability for case q = 2 (reference to paper proving it... ?)
 The following theorem regarding the feasibility of solving the SBM problem for two labels has been proven in \cite{ramanujan}. 
 
-\begin{theorem}
+\begin{theorem}[Theorem in \cite{ramanujan}]
 In the case $m \rightarrow \infty$, for a graph generated by SBM with $k = 2$, unless
    \begin{equation}
       c_\text{in} - c_\text{out} > 2 \sqrt{c},
@@ -778,7 +779,7 @@ The lower the difference $c_\text{in} - c_\text{out}$, the harder it is to solve
 A generalization of the theorem above is an important conjecture in network theory.
 % conjecture for general case
 
-\begin{conjecture}
+\begin{conjecture}[Conjecture in \cite{ramanujan}]
 In the case $m \rightarrow \infty$, for a graph generated by SBM, unless
    \begin{equation}
       c_\text{in} - c_\text{out} > k \sqrt{c},
@@ -877,7 +878,7 @@ However, since clustering only makes use of the internal structure of the data, 
 In this context, a new class of semi-supervised algorithms known as constrained clustering has appeared.
 While these methods do not demand large amounts of labeled data as inputs, they still make it possible for a small amount of training data to influence the final outcome of the clustering process.
 In this chapter, we describe FAST-GE-2.0, a spectral way of performing constrained clustering, and see the theory behind its correctness.
-This chapter is mainly a survey of the results from \cite{fastge2}, although we have changed some of the presentation and notation as to make them fit better with the rest of this thesis, supplied some additional explanations and justifications not present in the original paper and provided some new results that connect to the rest of the thesis.\footnote{For example, Figure~\vref{gm}, Figure~\vref{gh}, Proposition~\vref{spanOfLn}, Proposition~\vref{spanOfLh} and Proposition~\vref{huesing}.}
+This chapter is mainly a survey of the results from \cite{fastge2}, although we have changed some of the presentation and notation as to make them fit better with the rest of this thesis, and, for completeness, supplied some additional explanations and justifications not present in the original paper and provided some new results that connect to the rest of the thesis.\footnote{For example, Figure~\vref{gm}, Figure~\vref{gh}, Proposition~\vref{spanOfLn}, Proposition~\vref{spanOfLh} and Proposition~\vref{huesing}.}
 
 \section{Constrained clustering}
 In this chapter, $m$, $n$, and $k$ represent positive integers, with $k > 1$.
@@ -918,7 +919,7 @@ In this subsection we define the auxiliary graphs used in FAST-GE-2.0.
 % Graph G_M (include figure)
 \subsubsection*{The graph $G_M$}
 
-\begin{definition}
+\begin{definition}[Definition (from \cite{fastge2})]
    The graph $G_M = (V,E)$ is defined by its adjacency matrix 
    \begin{equation}\label{am}
    A_M = \sum_{\ell = 1}^k A_{M_{\ell}},
@@ -954,7 +955,7 @@ Therefore we must try to minimize it as much as possible.
 % Graph G_H (include figure)
 \subsubsection*{The graph $G_H$}
 
-\begin{definition}
+\begin{definition}[Definition (from \cite{fastge2})]
 The graph $G_H = (V,E)$ is defined by its adjacency matrix
    \begin{equation}\label{ah}
       A_H = \frac{1}{m} \, (A_C + {A_C}^{\rm T} + A_K).
@@ -1003,7 +1004,7 @@ In this and the following subsections, we assume $\ell \in \Iintv{1,k}$.
 From our discussions in the last section, we know that we want to both minimize $\cut _{G_M\,}(C_{\ell})$ and to maximize $\cut _{G_H\,}(C_{\ell})$.
 A natural next step, then, is to create some form of measure involving both cuts that we can optimize.
 
-\begin{definition}
+\begin{definition}[Definition (from \cite{fastge2})]
   We define the measure of badness $\phi_\ell$ relative to a cluster $C_\ell$ as follows:
    \begin{equation}
       \phi_\ell = \frac{\cut_{G_M\,} (C_\ell) + \cut_{G\,}(C_\ell)}{\cut_{G_H\,}(C_\ell)},
@@ -1032,7 +1033,7 @@ Therefore, for any given cluster $C_\ell$, the measure $\phi_\ell$ successfully 
 
 % Get the equation for k-way constrained partioning
 
-\begin{definition}
+\begin{definition}[Definition (from \cite{fastge2})]
    The \textit{objective of FAST-GE-2.0} for a $k$-way constrained partitioning is given by
    \begin{equation}\label{objective}
       \min_{(C_1, C_2, \cdots, C_k)} \max_{\ell} \, \phi _\ell.
@@ -1154,7 +1155,7 @@ Let us check whether this condition holds or not.
 Proposition \vref{spanOfLh} shows to us then that we cannot use the Generalized Courant-Fischer Theorem as a guarantee that the spectral relaxation will work.
 Fortunately, Chengming Jiang et al. proved the following theorem in \cite{fastge2}.
 
-\begin{theorem}
+\begin{theorem}[Theorem 1 in \cite{fastge2}]
    \label{fastge2theorem}
    For the matrices $L_N$ and $L_H$ defined in this chapter, the following holds
    \begin{enumerate}[(a)]
@@ -1204,7 +1205,7 @@ which is problematic due to the following proposition:
 To fix this problem, then, we need to regularize the pencil $(L_N, L_H)$.
 The following theorem, also proved in \cite{fastge2}, allows us to do that:
 
-\begin{theorem}
+\begin{theorem}[Theorem 2 in \cite{fastge2}]
    Suppose the pencil $(L_N, L_H)$ has the finite eigenvalues $\lambda_1 \le \lambda_2 \le \cdots \le \lambda_r$, where $r$ is the rank of the matrix $L_H$. Let
    \begin{equation}\label{regularization}
       K = - L_H,  \text{ and } M = L_N + \mu L_H + ZSZ^{\rm T},
@@ -1344,7 +1345,7 @@ However, all the experiments done in this thesis use data that is accompanied by
 
 Mutual information is an external method to evaluate how good a clustering partition is based on information theory.
 
-\begin{definition}
+\begin{definition}[Definition (from \cite{nmi})]
    Given a graph $G = (V,E)$ of order $m$ to be clustered, the \textit{mutual information} $\ii (C, T)$ of $C$ and $T$ is the measure that takes the set of clusters found by the algorithm $C = \{ C_1, C_2, \cdots, C_k \}$ and the set of clusters found by the algorithm $T = \{ T_1, T_2, \cdots, T_\ell \}$ and outputs a real number as follows:
 \begin{equation}
    \ii (C, T) = \sum_{i=1}^k \sum _{j=1}^\ell \frac{|C_i \cap T_j|}{m} \log \left( \frac{m |C_i \cap T_j|}{|C_i| |T_j|} \right),
@@ -1360,7 +1361,7 @@ This is not desirable for us since we want the set of clusters to be as small as
 To solve this problem we need to perform some kind of normalization.
 But before doing that we need to give a preliminary definition:
 
-\begin{definition}
+\begin{definition}[Definition (from \cite{nmi})]
    Given a set of clusters $C = \{C_1, C_2, \cdots, C_k \}$ of a graph $G=(V,E)$ of order $m$, we define the \textit{entropy} of $C$ as the following quantity:
 \begin{equation}
    \h (C) = - \sum_{i=1}^k \frac{|C_i|}{m} \log \left( \frac{|C_i|}{m} \right) .
@@ -1371,7 +1372,7 @@ Entropy is a important concept in the field of information theory and measures t
 
 With that definition in hands, we can then normalize the mutual information measure to avoid the problem we discussed.
 
-\begin{definition}
+\begin{definition}[Definition (from \cite{nmi})]
    Given a graph $G = (V,E)$ of order $m$ to be clustered, the \textit{normalized mutual information} $\nmi (C, T)$ of $C$ and $T$ is the measure that takes the set of clusters found by the algorithm $C = \{ C_1, C_2, \cdots, C_k \}$ and the set of clusters found by the algorithm $T = \{ T_1, T_2, \cdots, T_\ell \}$ and outputs a real number as follows:
 \begin{equation}
    \nmi (C,T) = \frac{2\ii (C,T)}{\h (C) + \h (T)}
